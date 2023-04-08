@@ -27,9 +27,13 @@ class DeckTest extends FunSuite {
   }
   test("A card can be added to an existing deck") {
     assertEquals(deck3, deck2.addCard(Card2))
+    val monks = Set(Card1, Card2, Card1)
+    val expected = new Deck(monks, deckName, capacity)
+    assertEquals(expected, deck3.addCard(Card1))
   }
   test("A card can be removed from an existing deck") {
     assertEquals(deck1, deck2.removeCard(Card2))
+    assertEquals(deck1, deck1.removeCard(Card1))
   }
   test("An existing deck can be shuffled") {
     val monks = Set(Card2, Card1)
