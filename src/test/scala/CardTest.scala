@@ -11,6 +11,7 @@ class CardTest extends FunSuite {
     card1 = new Card(name, atk)
   }
   test("A card can be created with a name and a strength value"){
-    assertEquals(card1.name, atk)
+    assertEquals(card1.name, name)
+    assertEquals(card1.str, atk)
   }
 }
