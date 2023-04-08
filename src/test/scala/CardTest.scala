@@ -4,7 +4,7 @@ import munit.FunSuite
 
 // todavía no se testearan clasificaciones ni efectos
 class CardTest extends FunSuite {
-  val name = "Errabundo Eta"
+  val name = "Eta, el Errabundo"
   val atk = 5
   var card1: Card = _
   override def beforeEach(context: BeforeEach): Unit = {
