@@ -22,8 +22,8 @@ class SiegeCardTest extends FunSuite{
 
     val siegeCard2 = new SiegeCard("Soldado de arcilla", str)
     assert(!bomba.equals(siegeCard2))
-    siegeCard2.name = name
-    siegeCard2.str = 9
-    assert(!bomba.equals(siegeCard2))
+    
+    val siegeCard3 = new SiegeCard(name, 5)
+    assert(!bomba.equals(siegeCard3))
   }
 }

@@ -20,6 +20,9 @@ class MeleeCardTest extends FunSuite {
 
     val meleeMonk2 = new MeleeCard("Sun Tzu, el primer monje", str)
     assert(!meleeMonk.equals(meleeMonk2))
+    
+    val meleeMonk3 = new MeleeCard(name, 8)
+    assert(!meleeMonk.equals(meleeMonk3))
   }
 }
 
