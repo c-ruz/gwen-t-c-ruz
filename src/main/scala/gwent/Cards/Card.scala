@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package gwent
+package gwent.Cards
 
 trait Card {
   val name: String
