@@ -12,6 +12,14 @@ class MeleeCardTest extends FunSuite {
   }
 
   test("A MeleeCard can be created with a name and strength") {
+    assertEquals(meleeMonk.name, name)
+    assertEquals(meleeMonk.str, str)
+  }
+  test("Testing structural equality between MeleeCard objects") {
     assertEquals(new MeleeCard(name, str), meleeMonk)
+
+    val meleeMonk2 = new MeleeCard("Sun Tzu, el primer monje", str)
+    assert(!meleeMonk.equals(meleeMonk2))
   }
 }
+
