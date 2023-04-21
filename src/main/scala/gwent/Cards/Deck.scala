@@ -28,7 +28,7 @@ class Deck(val name: String,
       for (card <- this.cards) {
         other.cards -= card
       }
-      if (other.cards.length == 0) {
+      if (other.cards.isEmpty) {
         true
       } else {
         false
