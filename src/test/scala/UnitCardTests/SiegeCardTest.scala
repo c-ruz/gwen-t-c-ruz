@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 package UnitCardTests
 
+import cl.uchile.dcc.gwent.Cards.SiegeCard
 import munit.FunSuite
 
 class SiegeCardTest extends FunSuite{

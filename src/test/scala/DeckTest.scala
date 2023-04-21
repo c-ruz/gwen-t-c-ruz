@@ -3,7 +3,7 @@ package cl.uchile.dcc
 import munit.FunSuite
 import scala.collection.mutable.ArrayBuffer
 
-class DeckTest extends FunSuite with ArrayBuffer {
+class DeckTest extends FunSuite{
   val deckName = "Xan-Kei Deck"
   val capacity = 3
   val Card1 = new MeleeCard("Zeeh, la primera luz", 3)
@@ -24,14 +24,14 @@ class DeckTest extends FunSuite with ArrayBuffer {
     assertEquals(deck1.holding, 0)
   }
 
-  test("A deck can be created with cards") {
+  test("A deck can be created with an array of cards, name and capacity") {
     assertEquals(deck2.name, deckName)
     assertEquals(deck2.capacity, capacity)
     assertEquals(deck2.holding, 3)
   }
 
   test("Testing estructural equality between decks") {
-    expected = new Deck(array2, deckName, capacity)
+    val expected = new Deck(array2, deckName, capacity)
     assertEquals(expected, deck2)
   }
 
