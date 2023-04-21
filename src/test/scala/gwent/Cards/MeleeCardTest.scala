@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package Cards
+package gwent.Cards
 
 import cl.uchile.dcc.gwent.Cards.MeleeCard
 import munit.FunSuite
@@ -18,6 +18,8 @@ class MeleeCardTest extends FunSuite {
   }
   test("Testing structural equality between MeleeCard objects") {
     assertEquals(new MeleeCard(name, str), meleeMonk)
+
+    assert(!meleeMonk.equals(new RangedCard(name, str)))
 
     val meleeMonk2 = new MeleeCard("Sun Tzu, el primer monje", str)
     assert(!meleeMonk.equals(meleeMonk2))
