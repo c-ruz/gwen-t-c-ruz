@@ -1,6 +1,11 @@
 package cl.uchile.dcc
+package gwent
 
+import gwent.Cards
+
+import cl.uchile.dcc.gwent.Cards.Deck
 import munit.FunSuite
+
 import scala.collection.mutable.ArrayBuffer
 
 class DeckTest extends FunSuite{

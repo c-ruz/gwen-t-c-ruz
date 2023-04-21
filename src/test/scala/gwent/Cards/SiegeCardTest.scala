@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package UnitCardTests
+package Cards
 
 import cl.uchile.dcc.gwent.Cards.SiegeCard
 import munit.FunSuite
