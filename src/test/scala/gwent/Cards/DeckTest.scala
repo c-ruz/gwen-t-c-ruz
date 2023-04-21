@@ -1,18 +1,16 @@
 package cl.uchile.dcc
-package gwent
+package gwent.Cards
 
 import gwent.Cards
-
-import cl.uchile.dcc.gwent.Cards.Deck
+import gwent.Cards.Deck
 import munit.FunSuite
-
 import scala.collection.mutable.ArrayBuffer
 
 class DeckTest extends FunSuite{
   val deckName = "Xan-Kei Deck"
   val capacity = 3
   val Card1 = new MeleeCard("Zeeh, la primera luz", 3)
-  val Card2 = new RangeCard("Emperador Ten", 5)
+  val Card2 = new RangedCard("Emperador Ten", 5)
   val Card3 = new SiegeCard("Soldado de arcilla", 2)
   var array2 = ArrayBuffer[Card](Card1,Card2,Card3)
   var deck1: Deck = _
@@ -35,9 +33,16 @@ class DeckTest extends FunSuite{
     assertEquals(deck2.holding, 3)
   }
 
-  test("Testing estructural equality between decks") {
-    val expected = new Deck(array2, deckName, capacity)
+  test("Testing structural equality between decks") {
+    assert(!deck1.equals(Card1))
+
+    assert(!deck1.equals(deck2))
+    var expected = new Deck(array2, deckName, capacity)
     assertEquals(expected, deck2)
+
+    val array = ArrayBuffer[Card](Card1, Card2, Card1)
+    expected = new Deck(array, deckName, capacity)
+    assert(!deck2.equals(expected))
   }
 
 
@@ -47,6 +52,7 @@ class DeckTest extends FunSuite{
     //Solo compara que tenga las mismas cartas
     assertEquals(before, deck2)
   }
+
   /**test("A deck can be created with a set of cards, name and max capacity") {
     assertEquals(deck2.name, deckName)
     assertEquals(deck2.capacity, capacity)
