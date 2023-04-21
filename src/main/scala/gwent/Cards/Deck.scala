@@ -1,13 +1,17 @@
 package cl.uchile.dcc
-package gwent
+package gwent.Cards
 
-import gwent.Cards.Card
 import scala.collection.mutable.ArrayBuffer
 
-class Deck(var cards: ArrayBuffer[Card] = ArrayBuffer[Card](),
-           val name: String,
+class Deck(val name: String,
            val capacity: Int) extends Equals {
-
+  val cards: ArrayBuffer[Card] = ArrayBuffer[Card]()
+  var holding = 0
+  def this(list: ArrayBuffer[Card], name: String, capacity: Int) = {
+    this(name, capacity)
+    cards ++= list
+    holding += list.length
+  }
   override def canEqual(that: Any): Boolean = that.isInstanceOf[Deck]
   override def equals(obj: Any): Boolean = {
     if (canEqual(obj: Any)) {
@@ -33,7 +37,7 @@ class Deck(var cards: ArrayBuffer[Card] = ArrayBuffer[Card](),
       false
     }
   }
-  def mix(deck: Deck): Unit = {
-    util.Random.shuffle(deck.cards)
+  def mix(): Unit = {
+    util.Random.shuffle(this.cards)
   }
 }
