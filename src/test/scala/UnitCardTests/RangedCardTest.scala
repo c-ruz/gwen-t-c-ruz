@@ -21,6 +21,6 @@ class RangedCardTest extends FunSuite{
     assert(!rangedCard.equals(rangedCard2))
 
     val rangedCard3 = new RangedCard(name, 10)
-    assert(!rangedCard.equals(rangedCard2))
+    assert(!rangedCard.equals(rangedCard3))
   }
 }
