@@ -12,11 +12,12 @@ class DeckTest extends FunSuite{
   val Card1 = new MeleeCard("Zeeh, la primera luz", 3)
   val Card2 = new RangedCard("Emperador Ten", 5)
   val Card3 = new SiegeCard("Soldado de terracota", 2)
-  var array2 = ArrayBuffer[Card](Card1,Card2,Card3)
+  var array2: ArrayBuffer[Card] = _
   var deck1: Deck = _
   var deck2: Deck = _
 
   override def beforeEach(context: BeforeEach): Unit = {
+    array2 = ArrayBuffer[Card](Card1,Card2,Card3)
     deck1 = new Deck(deckName, capacity)
     deck2 = new Deck(array2, deckName, capacity)
   }
@@ -51,6 +52,15 @@ class DeckTest extends FunSuite{
     deck2.mix()
     //Solo compara que tenga las mismas cartas
     assertEquals(before, deck2)
+  }
+
+  test("The first card of a Deck can be taken") {
+    assert(deck2.getFirst().equals(Card1))
+    assert(deck2.holding == 2)
+    assert(deck2.getFirst().equals(Card2))
+    assert(deck2.holding == 1)
+    assert(deck2.getFirst().equals(Card3))
+    assert(deck2.holding == 0)
   }
 
   /**test("A deck can be created with a set of cards, name and max capacity") {
