@@ -11,7 +11,7 @@ class DeckTest extends FunSuite{
   val capacity = 3
   val Card1 = new MeleeCard("Zeeh, la primera luz", 3)
   val Card2 = new RangedCard("Emperador Ten", 5)
-  val Card3 = new SiegeCard("Soldado de arcilla", 2)
+  val Card3 = new SiegeCard("Soldado de terracota", 2)
   var array2 = ArrayBuffer[Card](Card1,Card2,Card3)
   var deck1: Deck = _
   var deck2: Deck = _
