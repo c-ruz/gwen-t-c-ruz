@@ -5,7 +5,7 @@ import scala.collection.mutable.ArrayBuffer
 
 class Deck(val name: String,
            val capacity: Int) extends Equals {
-  val cards: ArrayBuffer[Card] = ArrayBuffer[Card]()
+  var cards: ArrayBuffer[Card] = ArrayBuffer[Card]()
   var holding = 0
   def this(list: ArrayBuffer[Card], name: String, capacity: Int) = {
     this(name, capacity)
@@ -39,5 +39,11 @@ class Deck(val name: String,
   }
   def mix(): Unit = {
     util.Random.shuffle(this.cards)
+  }
+  def getFirst(): Card = {
+    val card = this.cards(0)
+    this.cards.remove(0)
+    this.holding -= 1
+    card
   }
 }
