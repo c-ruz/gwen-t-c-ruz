@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.Cards
 
+import java.util.Objects
+
 class SiegeCard(name: String, str: Int) extends AbsUnitCard(name, str) with Equals {
   override def canEqual(that: Any): Boolean = that.isInstanceOf[SiegeCard]
 
@@ -13,4 +15,6 @@ class SiegeCard(name: String, str: Int) extends AbsUnitCard(name, str) with Equa
       false
     }
   }
+
+  override def hashCode(): Int = Objects.hash(classOf[SiegeCard], name, str)
 }
