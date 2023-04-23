@@ -1,6 +1,8 @@
 package cl.uchile.dcc
 package gwent.Cards
 
+import java.util.Objects
+
 class WeatherCard(val name: String) extends Card with Equals {
   override def canEqual(that: Any): Boolean = that.isInstanceOf[WeatherCard]
 
@@ -13,4 +15,6 @@ class WeatherCard(val name: String) extends Card with Equals {
       false
     }
   }
+
+  override def hashCode(): Int = Objects.hash(classOf[WeatherCard], name)
 }
