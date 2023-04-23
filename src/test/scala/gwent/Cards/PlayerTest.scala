@@ -1,14 +1,16 @@
 package cl.uchile.dcc
+package gwent.Cards
 
-import munit.FunSuite
 import gwent.Cards
 
+import munit.FunSuite
+
 class PlayerTest extends FunSuite {
-  val Card1 = new Card("Eta, el Errabundo", 5)
+  val Card1 = new MeleeCard("Eta, el Errabundo", 5)
   val Card2 = new Card("Zeeh, la primera luz", 3)
   val Card3 = new Card("Diral, dimensión espiral")
-  val Card4 = new Card("Escarcha mordiente")
-  val Card5 = new Card("Clima despejado")
+  val Card4 = new WeatherCard("Escarcha mordiente")
+  val Card5 = new WeatherCard("Clima despejado")
   val gems = 3
   var player1: Player = _
   var deck1: Deck = _
