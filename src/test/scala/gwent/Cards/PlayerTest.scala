@@ -1,6 +1,7 @@
 package cl.uchile.dcc
 
 import munit.FunSuite
+import gwent.Cards
 
 class PlayerTest extends FunSuite {
   val Card1 = new Card("Eta, el Errabundo", 5)
