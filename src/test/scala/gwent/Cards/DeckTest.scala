@@ -36,12 +36,13 @@ class DeckTest extends FunSuite{
 
   test("Testing structural equality between decks") {
     assert(!deck1.equals(Card1))
-
     assert(!deck1.equals(deck2))
-    var expected = new Deck(array2, deckName, capacity)
+
+    var array = ArrayBuffer[Card](Card1,Card2,Card3)
+    var expected = new Deck( array, deckName, capacity)
     assertEquals(expected, deck2)
 
-    val array = ArrayBuffer[Card](Card1, Card2, Card1)
+    array = ArrayBuffer[Card](Card1, Card2, Card1)
     expected = new Deck(array, deckName, capacity)
     assert(!deck2.equals(expected))
   }
@@ -55,11 +56,11 @@ class DeckTest extends FunSuite{
   }
 
   test("The first card of a Deck can be taken") {
-    assert(deck2.getFirst().equals(Card1))
+    assert(deck2.getFirst.equals(Card1))
     assert(deck2.holding == 2)
-    assert(deck2.getFirst().equals(Card2))
+    assert(deck2.getFirst.equals(Card2))
     assert(deck2.holding == 1)
-    assert(deck2.getFirst().equals(Card3))
+    assert(deck2.getFirst.equals(Card3))
     assert(deck2.holding == 0)
   }
 
