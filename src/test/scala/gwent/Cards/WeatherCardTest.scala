@@ -15,9 +15,12 @@ class WeatherCardTest extends FunSuite {
     /** For now */
     var expected = new WeatherCard(name)
     assertEquals(expected, weather)
+    assertEquals(expected.##, weather.##)
+
     assert(!weather.equals(new MeleeCard(name, 10)))
 
     expected = new WeatherCard("Clima Despejado")
     assert(!weather.equals(expected))
+    assert(!weather.##.equals(expected.##))
   }
 }
