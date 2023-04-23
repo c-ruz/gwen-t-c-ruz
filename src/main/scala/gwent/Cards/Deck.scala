@@ -25,10 +25,11 @@ class Deck(val name: String,
   }
   private def sameCards(other: Deck): Boolean = {
     if (this.cards.length == other.cards.length) {
+      val compare = other.cards.clone()
       for (card <- this.cards) {
-        other.cards -= card
+        compare -= card
       }
-      if (other.cards.isEmpty) {
+      if (compare.isEmpty) {
         true
       } else {
         false
@@ -40,7 +41,7 @@ class Deck(val name: String,
   def mix(): Unit = {
     util.Random.shuffle(this.cards)
   }
-  def getFirst(): Card = {
+  def getFirst: Card = {
     val card = this.cards(0)
     this.cards.remove(0)
     this.holding -= 1
