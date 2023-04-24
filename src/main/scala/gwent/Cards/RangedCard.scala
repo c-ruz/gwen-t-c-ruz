@@ -3,6 +3,11 @@ package gwent.Cards
 
 import java.util.Objects
 
+/**
+ * Represents a ranged unit card used in the game.
+ * @param name The name of the card.
+ * @param str  The strength of the card.            
+ */
 class RangedCard(name: String, str: Int) extends AbsUnitCard(name, str) with Equals {
   override def canEqual(that: Any): Boolean = that.isInstanceOf[RangedCard]
 

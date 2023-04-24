@@ -3,6 +3,10 @@ package gwent.Cards
 
 import java.util.Objects
 
+/**
+ * Represents a weather card used in the game.
+ * @param name The name of the card.
+ */
 class WeatherCard(val name: String) extends Card with Equals {
   override def canEqual(that: Any): Boolean = that.isInstanceOf[WeatherCard]
 
