@@ -17,7 +17,7 @@ class DeckTest extends FunSuite{
   var deck2: Deck = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    array2 = ArrayBuffer[Card](Card1,Card2,Card3)
+    array2 = ArrayBuffer(Card1,Card2,Card3)
     deck1 = new Deck(deckName, capacity)
     deck2 = new Deck(array2, deckName, capacity)
   }
@@ -28,22 +28,42 @@ class DeckTest extends FunSuite{
     assertEquals(deck1.holding, 0)
   }
 
+  test("Can add cards to a deck") {
+    deck1.addCard(Card1)
+
+    val expected = new Deck(ArrayBuffer(Card1), deckName, capacity)
+    assertEquals(deck1, expected)
+    assert(deck1.holding == 1)
+  }
+
+  test("Cannot add cards over capacity") {
+    deck2.addCard(Card3)
+    val expected = new Deck(array2, deckName, capacity)
+    assertEquals(deck2, expected)
+    assert(deck2.capacity == 3)
+  }
+
   test("A deck can be created with an array of cards, name and capacity") {
     assertEquals(deck2.name, deckName)
     assertEquals(deck2.capacity, capacity)
     assertEquals(deck2.holding, 3)
   }
 
+  test("When creating a Deck, if capacity is exceeded, only add the first cards that fit") {
+    // if capacity is 3, then the first 3 in (Card1,Card2,Card3,Card1) 
+    array2 += Card1
+    val compare = new Deck(array2, deckName, capacity)
+    assertEquals(deck2, compare)
+  }
+
   test("Testing structural equality between decks") {
     assert(!deck1.equals(Card1))
     assert(!deck1.equals(deck2))
 
-    var array = ArrayBuffer[Card](Card1,Card2,Card3)
-    var expected = new Deck( array, deckName, capacity)
+    var expected = new Deck( array2, deckName, capacity)
     assertEquals(expected, deck2)
 
-    array = ArrayBuffer[Card](Card1, Card2, Card1)
-    expected = new Deck(array, deckName, capacity)
+    expected = new Deck(ArrayBuffer[Card](Card1, Card2, Card1), deckName, capacity)
     assert(!deck2.equals(expected))
   }
 
@@ -51,7 +71,7 @@ class DeckTest extends FunSuite{
   test("An existing deck can be shuffled") {
     val before = new Deck(array2, deckName, capacity)
     deck2.mix()
-    //Solo compara que tenga las mismas cartas
+    // We only compare if they have the same cards for now
     assertEquals(before, deck2)
   }
 
