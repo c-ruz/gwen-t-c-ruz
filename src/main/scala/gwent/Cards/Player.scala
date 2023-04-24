@@ -8,7 +8,7 @@ package gwent.Cards
  * @param deck The deck assigned to the player
  * @param hand The hand assigned to the player
  */
-class Player(val name: String, var gems: Int = 3, val deck: Deck, val hand: Hand) extends Equals {
+class Player(val name: String, var gems: Int, val deck: Deck, val hand: Hand) extends Equals {
 
   override def canEqual(that: Any): Boolean = that.isInstanceOf[Player]
 
