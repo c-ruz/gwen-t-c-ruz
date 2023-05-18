@@ -5,35 +5,52 @@ import scala.collection.mutable.ArrayBuffer
 
 /**
  * Represents a deck of cards used in the game.
- * @param name The name of the game (mostly for differentiation).
- * @param capacity How many cards can a deck hold.
+ * @param _name       The name of the deck (mostly for differentiation).
+ * @param _capacity   How many cards can a deck hold.
  */
-class Deck(val name: String,
-           val capacity: Int) extends Equals {
-  private var cards: ArrayBuffer[Card] = ArrayBuffer()
-  var holding = 0
-
+class Deck(private val _name: String,
+           private val _capacity: Int) extends Equals {
+  private val cards: ArrayBuffer[Card] = ArrayBuffer()
+  private var _holding = 0
   /**
    * Represents a deck of cards used in the game.
    *
-   * @param name      The name of the game (mostly for differentiation).
-   * @param capacity  How many cards can a deck hold.
-   * @param list      When creating a deck with initial cards, add a list
+   * @param _name      The name of the deck (mostly for differentiation).
+   * @param _capacity  How many cards can a deck hold.
+   * @param list       When creating a deck with initial cards, add a list.
+   *                   If cards in list are > deck.capacity, add until full.
    */
-  def this(list: ArrayBuffer[Card], name: String, capacity: Int) = {
-    this(name, capacity)
+  def this(list: ArrayBuffer[Card], _name: String, _capacity: Int) = {
+    this(_name, _capacity)
     val amount = list.length
     if (amount <= capacity) {
       cards ++= list
-      holding += amount
+      holding_(amount)
     } else {
       cards ++= list.take(capacity)
-      holding += capacity
+      holding_(capacity)
     }
   }
 
-  override def canEqual(that: Any): Boolean = that.isInstanceOf[Deck]
+  /**
+   * ==================
+   * Getters y Setters
+   * ==================
+   */
+  def name: String = _name
+  def capacity: Int = _capacity
+  def holding: Int = _holding
 
+  def holding_(NewHolding: Int): Unit = {
+    _holding = math.max(0, NewHolding)
+  }
+
+  /**
+   * ========================
+   * Equals implementation
+   * ========================
+   */
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[Deck]
   override def equals(obj: Any): Boolean = {
     if (canEqual(obj: Any)) {
       val other = obj.asInstanceOf[Deck]
@@ -44,7 +61,6 @@ class Deck(val name: String,
       false
     }
   }
-
   /**
    * Returns true if both decks have the same cards, regardless of order.
    * @param other The other deck to compare.
@@ -66,6 +82,12 @@ class Deck(val name: String,
   }
 
   /**
+   * ==============
+   * Class Methods
+   * ==============
+   */
+
+  /**
    * Shuffles the cards in the deck.
    */
   def mix(): Unit = {
@@ -78,7 +100,7 @@ class Deck(val name: String,
   def getFirst: Card = {
     val card = this.cards(0)
     this.cards.remove(0)
-    this.holding -= 1
+    this.holding_(holding-1)
     card
   }
 
@@ -88,43 +110,7 @@ class Deck(val name: String,
   def addCard(card: Card): Unit = {
     if (this.holding < this.capacity) {
       this.cards += card
-      this.holding += 1
+      this.holding_(holding+1)
     }
   }
 }
-
-  /**
-  var cards: List[Card] = List[Card]()
-  var holding = 0
-
-  def this(list: List[Card], name: String, capacity: Int) = {
-    this(name, capacity)
-    val amount = list.length
-    if (amount <= capacity) {
-      cards ++= list
-      holding += amount
-    }
-  }
-
-  override def canEqual(that: Any): Boolean = that.isInstanceOf[Deck]
-
-  override def equals(obj: Any): Boolean = {
-    if (canEqual(obj: Any)) {
-      val other = obj.asInstanceOf[Deck]
-      (this eq other) ||
-        (this.name == other.name && this.capacity == other.capacity
-          && this.sameCards(other))
-    } else {
-      false
-    }
-  }
-
-  private def sameCards(other: Deck): Boolean = {
-    if (this.cards.length == other.cards.length) {
-      val traverse = this.cards.distinct
-      for (card <- traverse) {
-
-      }
-    }
-  }
-}*/

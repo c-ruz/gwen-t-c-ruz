@@ -5,9 +5,19 @@ package gwent.Cards
  * Represents the common structure of a card in the game.
  */
 trait Card {
-  val name: String
+
+  /**
+   * =============
+   * Getters
+   * =============
+   */
+
+  /**
+   * Gets the name of the card
+   */
+  def name: String
 }
 /**
- * Each card has a name.
+ * Each card has a name. Not all cards have strength; only Units.
  */
 
