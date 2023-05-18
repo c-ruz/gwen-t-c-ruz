@@ -1,9 +1,12 @@
 package cl.uchile.dcc
-package gwent.Cards
+package gwent.Cards.CardHandlerTest
 
 import gwent.Cards
-import cl.uchile.dcc.CardHandler.Deck
+import gwent.Cards.Card.{Card, MeleeCard, RangedCard, SiegeCard}
+import gwent.Cards.CardHandler.Deck
+
 import munit.FunSuite
+
 import scala.collection.mutable.ArrayBuffer
 
 class DeckTest extends FunSuite{
@@ -83,23 +86,4 @@ class DeckTest extends FunSuite{
     assert(deck2.getFirst.equals(Card3))
     assert(deck2.holding == 0)
   }
-
-  /**test("A deck can be created with a set of cards, name and max capacity") {
-    assertEquals(deck2.name, deckName)
-    assertEquals(deck2.capacity, capacity)
-    assertEquals(deck2.holding, 1)
-  }*/
-
-  /**test("A card can be removed from an existing deck") {
-    assertEquals(deck1, deck2.removeCard(Card2))
-    assertEquals(deck1, deck1.removeCard(Card1))
-    assertEquals(deck2, deck2.removeCard(Card2))
-  }*/
-
-  /**test("A card can be added to an existing deck") {
-    assertEquals(deck3, deck2.addCard(Card2))
-    val monks = Set(Card1, Card2, Card1)
-    val expected = new Deck(monks, deckName, capacity)
-    assertEquals(expected, deck3.addCard(Card1))
-  }*/
 }

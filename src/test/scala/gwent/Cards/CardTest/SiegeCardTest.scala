@@ -1,7 +1,8 @@
 package cl.uchile.dcc
-package gwent.Cards
+package gwent.Cards.CardTest
 
-import cl.uchile.dcc.gwent.Cards.SiegeCard
+import gwent.Cards.Card.{RangedCard, SiegeCard}
+
 import munit.FunSuite
 
 class SiegeCardTest extends FunSuite{

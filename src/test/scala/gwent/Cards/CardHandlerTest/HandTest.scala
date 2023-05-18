@@ -1,7 +1,9 @@
 package cl.uchile.dcc
-package gwent.Cards
+package gwent.Cards.CardHandlerTest
 
-import cl.uchile.dcc.CardHandler.Hand
+import gwent.Cards.Card.{Card, MeleeCard, RangedCard}
+import gwent.Cards.CardHandler.Hand
+
 import munit.FunSuite
 
 import scala.collection.mutable.ArrayBuffer

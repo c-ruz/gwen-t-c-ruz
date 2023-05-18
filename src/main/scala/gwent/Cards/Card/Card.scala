@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package gwent.Cards
+package gwent.Cards.Card
 
 /**
  * Represents the common structure of a card in the game.

@@ -3,7 +3,8 @@ package gwent.Cards
 
 import gwent.Cards
 
-import cl.uchile.dcc.CardHandler.{Deck, Hand}
+import cl.uchile.dcc.gwent.Cards.Card.{MeleeCard, SiegeCard, WeatherCard}
+import cl.uchile.dcc.gwent.Cards.CardHandler.{Deck, Hand}
 import munit.FunSuite
 
 import scala.collection.mutable.ArrayBuffer

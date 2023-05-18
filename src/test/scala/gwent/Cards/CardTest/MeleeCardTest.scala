@@ -1,5 +1,8 @@
 package cl.uchile.dcc
-package gwent.Cards
+package gwent.Cards.CardTest
+
+import gwent.Cards.Card.{MeleeCard, RangedCard}
+
 import munit.FunSuite
 
 class MeleeCardTest extends FunSuite {

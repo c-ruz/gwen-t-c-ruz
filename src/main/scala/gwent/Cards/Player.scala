@@ -1,6 +1,7 @@
 package cl.uchile.dcc
+package gwent.Cards
 
-import CardHandler.{Deck, Hand}
+import gwent.Cards.CardHandler.{Deck, Hand}
 
 /**
  * Represents a player in the game.
