@@ -2,7 +2,7 @@ package cl.uchile.dcc
 package gwent.Cards
 
 import gwent.Cards
-import gwent.Cards.Deck
+import cl.uchile.dcc.CardHandler.Deck
 import munit.FunSuite
 import scala.collection.mutable.ArrayBuffer
 

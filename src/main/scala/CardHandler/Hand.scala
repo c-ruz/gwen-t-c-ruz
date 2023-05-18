@@ -1,5 +1,7 @@
 package cl.uchile.dcc
-package gwent.Cards
+package CardHandler
+
+import gwent.Cards.Card
 
 import scala.collection.mutable.ArrayBuffer
 

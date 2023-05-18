@@ -1,7 +1,9 @@
 package cl.uchile.dcc
 package gwent.Cards
 
+import cl.uchile.dcc.CardHandler.Hand
 import munit.FunSuite
+
 import scala.collection.mutable.ArrayBuffer
 
 class HandTest extends FunSuite {

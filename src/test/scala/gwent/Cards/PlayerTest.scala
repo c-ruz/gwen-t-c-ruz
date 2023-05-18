@@ -2,7 +2,10 @@ package cl.uchile.dcc
 package gwent.Cards
 
 import gwent.Cards
+
+import cl.uchile.dcc.CardHandler.{Deck, Hand}
 import munit.FunSuite
+
 import scala.collection.mutable.ArrayBuffer
 
 class PlayerTest extends FunSuite {

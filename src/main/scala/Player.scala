@@ -1,8 +1,10 @@
 package cl.uchile.dcc
-package gwent.Cards
+
+import CardHandler.{Deck, Hand}
 
 /**
  * Represents a player in the game.
+ *
  * @param _name The name of the player.
  * @param _gems How many lives the player starts with.
  * @param _deck The deck assigned to the player
