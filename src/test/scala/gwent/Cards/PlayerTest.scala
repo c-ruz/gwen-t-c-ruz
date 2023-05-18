@@ -65,4 +65,9 @@ class PlayerTest extends FunSuite {
     player1.hit()
     assert(player1.gems == 2)
   }
+
+  test("If player is constructed with negative gems value, set to 0") {
+    val expected = new Player("Player 1", 0, deck1, hand1)
+    assertEquals(new Player("Player 1", -3, deck1, hand1), expected)
+  }
 }
