@@ -32,7 +32,7 @@ class boardTest extends FunSuite {
     deck1 = new Deck(ArrayBuffer(Card1, Card2, Card3, Card4), deckName, deckCap)
     hand1 = new Hand(3)
     player1 = new Player("Player1", gems, deck1, hand1, board)
-    
+
     deck2 = new Deck(ArrayBuffer(Card1, Card2, Card3, Card5), deckName2, deckCap)
     hand2 = new Hand(3)
     player2 = new Computer("CPU", gems, deck2, hand2, board)
@@ -56,9 +56,9 @@ class boardTest extends FunSuite {
     player1.draw()
     // hand should be Card1, Card2, Card3
 
-    player1.play(player1.hand.get(2))
+    player1.play(player1.hand.getCard(2))
     // Card2 is a MeleeCard
-    
+
     val expected1 = List(Card2)
     val expected2 = List()
     // checking if Card2 is where it should be
@@ -69,11 +69,11 @@ class boardTest extends FunSuite {
     // checking if we are only adding in player half
     assertEquals(board.computerArmy.MeleeFormation, expected2)
   }
-  
+
   test("When computer plays, cards are put in computer's half of board") {
     player2.draw()
     // hand is Card1, Card2, Card3
-    player2.play(player1.hand.get(2))
+    player2.play(player2.hand.getCard(2))
     // Card2 is a MeleeCard
 
     val expected1 = List(Card2)
@@ -87,19 +87,17 @@ class boardTest extends FunSuite {
     // checking if we are only adding in computer half
     assertEquals(board.playerArmy.MeleeFormation, expected2)
   }
-  
+
   test("Both players share the same weather slot") {
-    player1.draw(4)
-    player1.play(player1.hand.get(4))
+    player1.play(Card4)
 
     val expected1 = List(Card4)
     assert(board.WeatherSlot.equals(expected1))
 
-    player2.draw(4)
-    player2.play(player2.hand.get(4))
+    player2.play(Card5)
 
     val expected2 = List(Card5, Card4)
     assert(board.WeatherSlot.equals(expected2))
   }
-  
+
 }
