@@ -1,10 +1,12 @@
 package cl.uchile.dcc
-package gwent.Cards
+package gwent.game
 
-import gwent.Cards
-import cl.uchile.dcc.gwent.Cards.card.handler.{Deck, Hand}
+import gwent.game
 
-import cl.uchile.dcc.gwent.Cards.card.{MeleeCard, SiegeCard, WeatherCard}
+import cl.uchile.dcc.gwent.game.board.Board
+import cl.uchile.dcc.gwent.game.card.handler.{Deck, Hand}
+import cl.uchile.dcc.gwent.game.card.{MeleeCard, SiegeCard, WeatherCard}
+import cl.uchile.dcc.gwent.game.players.Player
 import munit.FunSuite
 
 import scala.collection.mutable.ArrayBuffer
@@ -22,11 +24,12 @@ class PlayerTest extends FunSuite {
   var player1: Player = _
   var deck1: Deck = _
   var hand1: Hand = _
+  val board: Board = new Board()
 
   override def beforeEach(context: BeforeEach): Unit = {
     deck1 = new Deck(ArrayBuffer(Card1, Card2, Card3, Card4, Card5), deckName, deckCap)
     hand1 = new Hand(3)
-    player1 = new Player("Player1", gems, deck1, hand1)
+    player1 = new Player("Player1", gems, deck1, hand1, board)
   }
 
   test("A player can be created with a name, amount of gems, deck and hand assigned") {
@@ -37,13 +40,13 @@ class PlayerTest extends FunSuite {
   }
 
   test("Two players are the same if they have the same name and deck") {
-    assertEquals(player1, new Player("Player1",gems,deck1,hand1))
+    assertEquals(player1, new Player("Player1",gems,deck1,hand1,board))
 
-    assert(!player1.equals(new Player("Player2",gems,deck1,hand1)))
+    assert(!player1.equals(new Player("Player2",gems,deck1,hand1,board)))
 
     val deck2 = new Deck("Empty deck", deckCap)
     val hand2 = new Hand(handCap)
-    assert(!player1.equals(new Player("Player1", gems, deck2, hand2)))
+    assert(!player1.equals(new Player("Player1", gems, deck2, hand2,board)))
 
     assert(!player1.equals(Card1))
 
@@ -71,7 +74,7 @@ class PlayerTest extends FunSuite {
   }
 
   test("If player is constructed with negative gems value, set to 0") {
-    val expected = new Player("Player 1", 0, deck1, hand1)
-    assertEquals(new Player("Player 1", -3, deck1, hand1), expected)
+    val expected = new Player("Player 1", 0, deck1, hand1, board)
+    assertEquals(new Player("Player 1", -3, deck1, hand1, board), expected)
   }
 }
