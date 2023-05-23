@@ -1,8 +1,8 @@
 package cl.uchile.dcc
-package gwent.Cards.handler
+package gwent.game.card.handler
 
-import gwent.Cards.card.{Card, MeleeCard, RangedCard}
-import cl.uchile.dcc.gwent.Cards.card.handler.Hand
+import gwent.game.card.{Card, MeleeCard, RangedCard}
+import gwent.game.card.handler.Hand
 
 import munit.FunSuite
 
