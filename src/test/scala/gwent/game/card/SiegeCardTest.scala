@@ -1,7 +1,7 @@
 package cl.uchile.dcc
-package gwent.Cards.card
+package gwent.game.card
 
-import gwent.Cards.card.{RangedCard, SiegeCard}
+import gwent.game.card.{RangedCard, SiegeCard}
 
 import munit.FunSuite
 
