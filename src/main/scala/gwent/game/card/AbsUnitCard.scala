@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package gwent.Cards.Card
+package gwent.Cards.card
 
 /**
  * Represents a unit card in the game. this class DOESN'T exist in the actual game, is only to represent common

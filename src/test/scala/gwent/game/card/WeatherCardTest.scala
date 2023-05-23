@@ -1,7 +1,7 @@
 package cl.uchile.dcc
-package gwent.Cards.CardTest
+package gwent.Cards.card
 
-import gwent.Cards.Card.{MeleeCard, WeatherCard}
+import gwent.Cards.card.{MeleeCard, WeatherCard}
 
 import munit.FunSuite
 

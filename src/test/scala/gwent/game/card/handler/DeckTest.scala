@@ -1,9 +1,9 @@
 package cl.uchile.dcc
-package gwent.Cards.CardHandlerTest
+package gwent.Cards.handler
 
 import gwent.Cards
-import gwent.Cards.Card.{Card, MeleeCard, RangedCard, SiegeCard}
-import gwent.Cards.CardHandler.Deck
+import gwent.Cards.card.{Card, MeleeCard, RangedCard, SiegeCard}
+import cl.uchile.dcc.gwent.Cards.card.handler.Deck
 
 import munit.FunSuite
 
