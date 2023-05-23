@@ -1,7 +1,9 @@
 package cl.uchile.dcc
-package gwent.Cards.card
+package gwent.game.card
 
-import gwent.Cards.card.Card
+import gwent.game.card.Card
+import gwent.game.board.Board
+import gwent.game.players.{Computer, Player}
 
 import java.util.Objects
 
@@ -31,4 +33,12 @@ class WeatherCard(val _name: String) extends Card with Equals {
     }
   }
   override def hashCode(): Int = Objects.hash(classOf[WeatherCard], name)
+
+  def placeOnPlayer(board: Board): Unit = {
+    board.placeWeather(this)
+  }
+
+  def placeOnComputer(board: Board): Unit = {
+    board.placeWeather(this)
+  }
 }

@@ -1,7 +1,9 @@
 package cl.uchile.dcc
-package gwent.Cards.card
+package gwent.game.card
 
-import gwent.Cards.card.AbsUnitCard
+import gwent.game.card.AbsUnitCard
+import cl.uchile.dcc.gwent.game.board.Board
+import cl.uchile.dcc.gwent.game.players.{Computer, Player}
 
 import java.util.Objects
 
@@ -24,4 +26,12 @@ class SiegeCard(name: String, str: Int) extends AbsUnitCard(name, str) with Equa
   }
 
   override def hashCode(): Int = Objects.hash(classOf[SiegeCard], name, str)
+
+  def placeOnPlayer(board: Board): Unit = {
+    board.playerArmy.placeSiege(this)
+  }
+
+  def placeOnComputer(board: Board): Unit = {
+    board.computerArmy.placeSiege(this)
+  }
 }

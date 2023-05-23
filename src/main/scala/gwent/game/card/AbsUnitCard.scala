@@ -1,5 +1,7 @@
 package cl.uchile.dcc
-package gwent.Cards.card
+package gwent.game.card
+
+import gwent.game.players.{Player, Computer}
 
 /**
  * Represents a unit card in the game. this class DOESN'T exist in the actual game, is only to represent common
@@ -19,4 +21,10 @@ abstract class AbsUnitCard(private val _name: String, private var _str: Int) ext
   def str_(NewStr: Int): Unit = {
     _str = math.max(0, NewStr)
   }
+
+  /**
+   * ==============
+   * Class methods
+   * ==============
+   */
 }
