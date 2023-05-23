@@ -1,7 +1,7 @@
 package cl.uchile.dcc
-package gwent.Cards.card.handler
+package gwent.game.card.handler
 
-import cl.uchile.dcc.gwent.Cards.card.Card
+import cl.uchile.dcc.gwent.game.card.Card
 import scala.collection.mutable.ArrayBuffer
 
 /**
@@ -112,7 +112,7 @@ class Hand(private val _handCapacity: Int) extends Equals {
    * @param index The index of the cards in the array representing the hand
    */
   def getCard(index: Int): Card = {
-    val card = cards(index)
+    val card = cards(index-1)
     card
   }
 }
