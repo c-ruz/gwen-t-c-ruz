@@ -33,10 +33,18 @@ class MeleeCard(name: String, str: Int) extends AbsUnitCard(name, str) with Equa
    * ==================
    */
 
+  /**
+   * Sends a message to the board that a Player is placing a MeleeCard
+    * @param board  the board where the card is going to be placed.
+   */
   def placeOnPlayer(board: Board): Unit = {
     board.playerArmy.placeMelee(this)
   }
 
+  /**
+   * Send a message to the board that a Computer is placing a MeleeCard
+   * @param board the board where the card is going to be placed.
+   */
   def placeOnComputer(board: Board): Unit = {
     board.computerArmy.placeMelee(this)
   }

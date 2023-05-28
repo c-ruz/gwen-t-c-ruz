@@ -26,9 +26,24 @@ class RangedCard(name: String, str: Int) extends AbsUnitCard(name, str) with Equ
   }
   override def hashCode(): Int = Objects.hash(classOf[RangedCard], name, str)
 
+  /**
+   * ==================
+   * Class methods
+   * ==================
+   */
+
+  /**
+   * Sends a message to the board that a Player is placing a RangedCard.
+   * @param board the board where the card is going to be placed.
+   */
   def placeOnPlayer(board: Board): Unit = {
     board.playerArmy.placeRanged(this)
   }
+
+  /**
+   * Sends a message to the board that a Computer is placing a RangedCard.
+   * @param board the board where the card is going to be placed.
+   */
 
   def placeOnComputer(board: Board): Unit = {
     board.computerArmy.placeRanged(this)

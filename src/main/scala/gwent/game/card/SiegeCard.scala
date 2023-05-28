@@ -27,10 +27,25 @@ class SiegeCard(name: String, str: Int) extends AbsUnitCard(name, str) with Equa
 
   override def hashCode(): Int = Objects.hash(classOf[SiegeCard], name, str)
 
+
+  /**
+   * ==================
+   * Class methods
+   * ==================
+   */
+
+  /**
+   * Sends a message to the board that a Player is placing a SiegeCard.
+    * @param board  the board where the card is going to be placed.
+   */
   def placeOnPlayer(board: Board): Unit = {
     board.playerArmy.placeSiege(this)
   }
 
+  /**
+   * Sends a message to the board that a Computer is placing a SiegeCard.
+   * @param board  the board where the card is going to be placed.
+   */
   def placeOnComputer(board: Board): Unit = {
     board.computerArmy.placeSiege(this)
   }

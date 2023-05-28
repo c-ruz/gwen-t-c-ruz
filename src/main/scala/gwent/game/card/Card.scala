@@ -20,15 +20,13 @@ trait Card {
    */
   def name: String
   /**
-   * Overloaded method place used in double dispatch method for playing cards. 
-   * @param player      Receives player, of type Player, 
-   *                    to play cards in the player section of the board.
+   * Sends a message that the card has to be placed on the player's side.
+   * @param board the board where the card is going to be placed.
    */
   def placeOnPlayer(board: Board): Unit
   /**
-   * Overloaded method place used in double dispatch method for playing cards.
-   * @param computer    Receives computer, of type Computer, 
-   *                    to play cards in the computer section of the board.
+   * Sends a message that the card has to be placed on the computer's side.
+   * @param board the board where the card is going to be placed.
    */
   def placeOnComputer(board: Board): Unit
 }
