@@ -3,7 +3,7 @@ package gwent.game.board
 
 import gwent.game.card.{MeleeCard, RangedCard, SiegeCard}
 
-class UnitBoard {
+class UnitBoard extends Equals {
 
   /**
    * Each list corresponds to the line of units forming the units' board
@@ -35,5 +35,24 @@ class UnitBoard {
   
   def placeSiege(card: SiegeCard): Unit = {
     _SiegeFormation = card :: _SiegeFormation
+  }
+
+  /**
+   * ======================
+   * Equals Implementation
+   * ======================
+   */
+
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[UnitBoard]
+
+  override def equals(obj: Any): Boolean = {
+    if (canEqual(obj)) {
+      val other = obj.asInstanceOf[UnitBoard]
+      (this eq other) || (this.MeleeFormation == other.MeleeFormation &&
+        this.RangedFormation == other.RangedFormation && this.SiegeFormation == other.SiegeFormation)
+    }
+    else {
+      false
+    }
   }
 }
