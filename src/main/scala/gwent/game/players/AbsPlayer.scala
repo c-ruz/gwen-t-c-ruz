@@ -79,8 +79,8 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
 
   /**
    * Sends a message to the card for it to place itself in the corresponding board section.
-   * @param card        card to be put in the board.
+   * @param index        position on hand of the card to be put in the board.
    */
-  def play(card: Card): Unit
+  def play(index: Int): Unit
   
 }
