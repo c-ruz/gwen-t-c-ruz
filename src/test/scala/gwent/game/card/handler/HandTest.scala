@@ -64,14 +64,14 @@ class HandTest extends FunSuite {
     assertEquals(hand2.holding, 2)
   }
 
-  test("Get a specified card from a hand based on order") {
-    assertEquals(hand2.getCard(0), Card1)
-    assertEquals(hand2.getCard(1), Card2)
+  test("Get a specified card from a hand giving the index") {
+    assertEquals(hand2.getCard(1), Card1)
+    assertEquals(hand2.getCard(2), Card2)
   }
   test("Remove a card from a hand") {
-    hand2.removeCard(Card1)
+    hand2.removeCard(1)
     assertEquals(hand2.holding, 1)
-    hand2.removeCard(Card2)
+    hand2.removeCard(1)
     assertEquals(hand2.holding, 0)
 
     assertEquals(hand1, hand2)
