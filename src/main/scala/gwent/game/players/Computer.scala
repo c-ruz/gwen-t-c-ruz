@@ -20,11 +20,7 @@ class Computer(name: String, gems: Int,
    */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[Computer]
   override def equals(obj: Any): Boolean = {
-    if (obj.isInstanceOf[Computer]) {
-      super.equals(obj)
-    } else {
-      false
-    }
+    super.equals(obj)
   }
 
   /**
@@ -35,9 +31,12 @@ class Computer(name: String, gems: Int,
 
   /**
    * Sends a message to card saying a computer is playing the card
-   * @param card        card to be put in the board.
+   * @param index        Position of the card to be played. Position starts at 1.
    */
-  def play(card: Card): Unit = {
-    card.placeOnComputer(board)
+  def play(index: Int): Unit = {
+    if (index <= hand.holding && index > 0) {
+      hand.getCard(index).placeOnComputer(board)
+      hand.removeCard(index)
+    }
   }
 }

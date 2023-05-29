@@ -20,11 +20,7 @@ class Player(name: String, gems: Int,
    */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[Player]
   override def equals(obj: Any): Boolean = {
-    if (obj.isInstanceOf[Player]) {
-      super.equals(obj)
-    } else {
-      false
-    }
+    super.equals(obj)
   }
 
   /**
@@ -35,9 +31,13 @@ class Player(name: String, gems: Int,
 
   /**
    * Sends a message to the card saying a player is playing the card.
-   * @param card        card to be put in the board.
+   * @param index   Position of the card to be played. Position starts at 1.
+   *
    */
-  def play(card: Card): Unit = {
-    card.placeOnPlayer(board)
+  def play(index: Int): Unit = {
+    if (index <= hand.holding && index > 0) {
+      hand.getCard(index).placeOnPlayer(board)
+      hand.removeCard(index)
+    }
   }
 }
