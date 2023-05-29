@@ -15,6 +15,9 @@ class RangedCardTest extends FunSuite{
   test("A RangedCard can be created with a name and strength") {
     assertEquals(rangedCard.name, name)
     assertEquals(rangedCard.str, str)
+
+    val strengthTest = new RangedCard(name, -1)
+    assertEquals(strengthTest.str, 0)
   }
   test("Testing structural equality between RangedCard objects") {
     val compare = new RangedCard(name, str)
