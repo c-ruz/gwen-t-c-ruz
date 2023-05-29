@@ -57,17 +57,18 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
    * ===========================
    */
   /**
-   * Draws some cards from the player's deck and adds them to their hand.
+   * Draws some cards from the player's deck and adds them to their hand. Adds until some break condition
+   * is met. Break conditions are: max hand capacity reached, deck empty or finished drawing.
    *
    * @param n Amount of cards to draw from player's deck.
    */
+  
   def draw(n: Int = 3): Unit = {
-    var n2 = n
-    if (hand.holding + n <= hand.handCapacity) {
-      while (n2 != 0) {
-        hand.addCard(deck.getFirst)
-        n2 -= 1
-      }
+    var n2 = math.max(0,n)
+    while (hand.holding < hand.handCapacity &&
+    deck.holding != 0 && n2 != 0) {
+      hand.addCard(deck.getFirst)
+      n2 -= 1
     }
   }
   /**
