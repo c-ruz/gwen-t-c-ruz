@@ -22,7 +22,6 @@ class Board() extends Equals {
    * ==================
    * Weather card slot
    * ==================
-   * initially empty, idk if that works
    */
   private var _weatherSlot: List[WeatherCard] = List()
 
@@ -62,12 +61,4 @@ class Board() extends Equals {
       false
     }
   }
-
-
-
-
-
-
-
-
 }
