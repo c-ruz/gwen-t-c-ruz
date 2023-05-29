@@ -107,6 +107,7 @@ class Deck(private val _name: String,
 
   /**
    * Adds a card to the deck if possible.
+   * @param card  card that's going to be added.
    */
   def addCard(card: Card): Unit = {
     if (this.holding < this.capacity) {
