@@ -87,7 +87,9 @@ class Hand(private val _handCapacity: Int) extends Equals {
    */
 
   /**
-   * Adds a card to the hand if possible.
+   * Adds a card to the hand. If there is not space left, does nothing.
+   *
+   * @card  card to be added.
    */
   def addCard(card: Card): Unit = {
     if (this.holding < this.handCapacity) {
@@ -98,21 +100,22 @@ class Hand(private val _handCapacity: Int) extends Equals {
   /**
    * remove a card from the hand.
    *
-   * @param card Some card inside the hand. Note that if the card is not present in the hand,
-   *             nothing will be deleted.
+   * @param index   position of the card to be removed. If there is no card, does nothing.
    */
-  def removeCard(card: Card): Unit = {
-    cards.remove(cards.indexOf(card))
-    holding_(holding - 1)
+  def removeCard(index: Int): Unit = {
+    if (index > 0 && index <= holding) {
+      cards.remove(index-1)
+      holding_(holding-1)
+    }
   }
 
   /**
-   * Adds a card to the hand if possible.
+   * Auxiliary method to use when playing cards. Possible exception is handled by play method
+   * on Player/Computer class.
    *
-   * @param index The index of the cards in the array representing the hand
+   * @param index The index of the card in the hand
    */
   def getCard(index: Int): Card = {
-    val card = cards(index-1)
-    card
+    cards(index-1)
   }
 }
