@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.game.board
 
-import cl.uchile.dcc.gwent.game.card.{MeleeCard, SiegeCard, WeatherCard}
+import cl.uchile.dcc.gwent.game.card.{MeleeCard, RangedCard, SiegeCard, WeatherCard}
 import cl.uchile.dcc.gwent.game.card.handler.{Deck, Hand}
 import cl.uchile.dcc.gwent.game.players.{Computer, Player}
 import munit.FunSuite
@@ -15,7 +15,7 @@ import scala.collection.mutable.ArrayBuffer
 class boardTest extends FunSuite {
 
   val Card1 = new MeleeCard("Eta, el Errabundo", 5)
-  val Card2 = new MeleeCard("Zeeh, la primera luz", 3)
+  val Card2 = new RangedCard("Zeeh, la primera luz", 3)
   val Card3 = new SiegeCard("Diral, dimensión espiral", 5)
   val Card4 = new WeatherCard("Escarcha mordiente")
   val Card5 = new WeatherCard("Clima despejado")
@@ -71,37 +71,52 @@ class boardTest extends FunSuite {
   test("Cards played by a player are put in the player's half") {
     player1.draw()
     // hand should be Card1, Card2, Card3
+    player1.play(1)
+    // Card1 is a MeleeCard
+    player1.play(1)
+    // Card2 is a RangedCard
+    player1.play(1)
+    // Card3 is a SiegeCard
 
-    player1.play(2)
-    // Card2 is a MeleeCard
-
-    val expected1 = List(Card2)
-    val expected2 = List()
-    // checking if Card2 is where it should be
+    val expected1 = List(Card1)
+    val expected2 = List(Card2)
+    val expected3 = List(Card3)
+    val expected4 = List()
+    // checking if Card1, Card2 and Card3 are where they should be
     assertEquals(board.playerArmy.MeleeFormation, expected1)
     assertEquals(board.playerArmy.RangedFormation, expected2)
-    assertEquals(board.playerArmy.SiegeFormation, expected2)
-    assertEquals(board.WeatherSlot, expected2)
+    assertEquals(board.playerArmy.SiegeFormation, expected3)
+    assertEquals(board.WeatherSlot, expected4)
     // checking if we are only adding in player half
-    assertEquals(board.computerArmy.MeleeFormation, expected2)
+    assertEquals(board.computerArmy.MeleeFormation, expected4)
+    assertEquals(board.computerArmy.RangedFormation, expected4)
+    assertEquals(board.computerArmy.SiegeFormation, expected4)
   }
 
   test("When computer plays, cards are put in computer's half of board") {
     player2.draw()
     // hand is Card1, Card2, Card3
-    player2.play(2)
-    // Card2 is a MeleeCard
+    player2.play(1)
+    // Card1 is a MeleeCard
+    player2.play(1)
+    // Card2 is a RangedCard
+    player2.play(1)
+    // Card3 is a SiegeCard
 
-    val expected1 = List(Card2)
-    val expected2 = List()
+    val expected1 = List(Card1)
+    val expected2 = List(Card2)
+    val expected3 = List(Card3)
+    val expected4 = List()
 
     // checking if Card2 is where it should be
     assertEquals(board.computerArmy.MeleeFormation, expected1)
     assertEquals(board.computerArmy.RangedFormation, expected2)
-    assertEquals(board.computerArmy.SiegeFormation, expected2)
-    assertEquals(board.WeatherSlot, expected2)
+    assertEquals(board.computerArmy.SiegeFormation, expected3)
+    assertEquals(board.WeatherSlot, expected4)
     // checking if we are only adding in computer half
-    assertEquals(board.playerArmy.MeleeFormation, expected2)
+    assertEquals(board.playerArmy.MeleeFormation, expected4)
+    assertEquals(board.playerArmy.RangedFormation, expected4)
+    assertEquals(board.playerArmy.SiegeFormation, expected4)
   }
 
   test("Both players share the same weather slot") {
