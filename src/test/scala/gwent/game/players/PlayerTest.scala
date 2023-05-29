@@ -62,10 +62,27 @@ class PlayerTest extends FunSuite {
     assertEquals(player1.hand, expectedHand)
     assertEquals(player1.deck, expectedDeck)
 
-    // player cannot exceed hand capacity or empty the deck
+    // player cannot exceed hand capacity or draw when deck is empty
     player1.draw(1)
     assertEquals(player1.hand, expectedHand)
-    assertEquals(player1.deck, expectedDeck)
+    // setting empty hand
+    player1.hand.removeCard(1)
+    player1.hand.removeCard(1)
+    player1.hand.removeCard(1)
+    player1.draw()
+
+    // since we only have 2 cards in the deck, hand should only draw 2 instead of 3 cards.
+    val expectedHand2 = new Hand(ArrayBuffer(Card4, Card5), handCap)
+    val expectedDeck2 = new Deck(deckName, deckCap)
+    assertEquals(player1.hand, expectedHand2)
+    assertEquals(player1.deck, expectedDeck2)
+  }
+
+  test("testing draw with negative value") {
+    player1.draw(-1)
+    val expectedHand = new Hand(handCap)
+
+    assertEquals(player1.hand, expectedHand)
   }
 
   test("A player can get hit") {
