@@ -1,12 +1,12 @@
 package cl.uchile.dcc
-package gwent.game
+package gwent.game.players
 
 import gwent.game
+import gwent.game.board.Board
+import gwent.game.card.handler.{Deck, Hand}
+import gwent.game.card.{MeleeCard, SiegeCard, WeatherCard}
+import gwent.game.players.Player
 
-import cl.uchile.dcc.gwent.game.board.Board
-import cl.uchile.dcc.gwent.game.card.handler.{Deck, Hand}
-import cl.uchile.dcc.gwent.game.card.{MeleeCard, SiegeCard, WeatherCard}
-import cl.uchile.dcc.gwent.game.players.Player
 import munit.FunSuite
 
 import scala.collection.mutable.ArrayBuffer
