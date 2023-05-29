@@ -51,3 +51,5 @@ List of relevant methods' implementation.
 + `placeSiege(card: SiegeCard): Unit` in the UnitBoard class. Receives a siege card and places it in the siege card section.
 + `placeWeather(card: WeatherCard): Unit` in the Board class. Receives a weather card and places it in the weather slot.
 
+Please read documentation in each class for more details.
+
