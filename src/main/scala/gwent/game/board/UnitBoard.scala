@@ -25,14 +25,25 @@ class UnitBoard extends Equals {
    * Methods
    * =========
    */
+
+  /**
+   * Places a MeleeCard in the MeleeFormation list.
+   * @param card  Card of type MeleeCard to be added.
+   */
   def placeMelee(card: MeleeCard): Unit = {
     _MeleeFormation = card :: _MeleeFormation
   }
-  
+  /**
+   * Places a RangedCard in the RangedFormation list.
+   * @param card  Card of type RangedCard to be added.
+   */
   def placeRanged(card: RangedCard): Unit = {
     _RangedFormation = card :: _RangedFormation
   }
-  
+  /**
+   * Places a SiegeCard in the SiegeFormation list.
+   * @param card  Card of type SiegeCard to be added.
+   */
   def placeSiege(card: SiegeCard): Unit = {
     _SiegeFormation = card :: _SiegeFormation
   }
