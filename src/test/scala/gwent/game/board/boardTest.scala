@@ -8,6 +8,10 @@ import munit.FunSuite
 
 import scala.collection.mutable.ArrayBuffer
 
+/**
+ * This test Class tests Board and UnitBoard functionality, as both classes are part of the general
+ * board of the game.
+ */
 class boardTest extends FunSuite {
 
   val Card1 = new MeleeCard("Eta, el Errabundo", 5)
@@ -19,31 +23,43 @@ class boardTest extends FunSuite {
   val deckName2 = "Xan-kei deck 2"
   val gems = 3
   var deckCap = 5
-  var handCap = 3
+  var handCap = 4
   var player1: Player = _
   var deck1: Deck = _
   var hand1: Hand = _
   var player2: Computer = _
   var deck2: Deck = _
   var hand2: Hand = _
-  val board: Board = new Board()
+  var board: Board = _
 
   override def beforeEach(context: BeforeEach): Unit = {
+    board = new Board
+
     deck1 = new Deck(ArrayBuffer(Card1, Card2, Card3, Card4), deckName, deckCap)
-    hand1 = new Hand(3)
+    hand1 = new Hand(handCap)
     player1 = new Player("Player1", gems, deck1, hand1, board)
 
     deck2 = new Deck(ArrayBuffer(Card1, Card2, Card3, Card5), deckName2, deckCap)
-    hand2 = new Hand(3)
+    hand2 = new Hand(handCap)
     player2 = new Computer("CPU", gems, deck2, hand2, board)
   }
 
 
-  test("A new empty Unitboard is created with 3 empty lists for melee, range, and siege units") {
+  test("A new empty UnitBoard is created with 3 empty lists for melee, range, and siege units") {
     val test = new UnitBoard()
     assert(test.MeleeFormation.isEmpty)
     assert(test.SiegeFormation.isEmpty)
     assert(test.RangedFormation.isEmpty)
+  }
+
+  test("UnitBoard structural equality test"){
+    val test = new UnitBoard
+    val expected = new UnitBoard
+
+    // Testing two empty unit boards
+    assertEquals(test, expected)
+    // Testing UnitBoard with Board
+    assert(!test.equals(board))
   }
 
 
@@ -56,7 +72,7 @@ class boardTest extends FunSuite {
     player1.draw()
     // hand should be Card1, Card2, Card3
 
-    player1.play(player1.hand.getCard(2))
+    player1.play(2)
     // Card2 is a MeleeCard
 
     val expected1 = List(Card2)
@@ -73,7 +89,7 @@ class boardTest extends FunSuite {
   test("When computer plays, cards are put in computer's half of board") {
     player2.draw()
     // hand is Card1, Card2, Card3
-    player2.play(player2.hand.getCard(2))
+    player2.play(2)
     // Card2 is a MeleeCard
 
     val expected1 = List(Card2)
@@ -89,15 +105,79 @@ class boardTest extends FunSuite {
   }
 
   test("Both players share the same weather slot") {
-    player1.play(Card4)
+    player1.draw(4)
+    player1.play(4)
 
     val expected1 = List(Card4)
     assert(board.WeatherSlot.equals(expected1))
 
-    player2.play(Card5)
+    player2.draw(4)
+    player2.play(4)
 
     val expected2 = List(Card5, Card4)
     assert(board.WeatherSlot.equals(expected2))
   }
 
+  test("Testing structural equality of UnitBoard with already placed cards") {
+    // Setting up the board
+    player1.draw()
+    player1.play(1)
+
+    // Compare with an empty UnitBoard
+    val compare = new UnitBoard
+    assert(!board.playerArmy.equals(compare))
+  }
+
+  test("Played cards are removed from the hand of who played them") {
+    player1.draw()
+    // hand is Card1, Card2, Card3
+    player1.play(1)
+
+    val expected = new Hand(ArrayBuffer(Card2, Card3), handCap)
+    assertEquals(player1.hand, expected)
+
+    player2.draw()
+    // hand is Card1, Card2, Card3
+    player2.play(2)
+
+    val expected2 = new Hand(ArrayBuffer(Card1, Card3), handCap)
+    assertEquals(player2.hand, expected2)
+  }
+
+  test("Can't play card with index out of bounds") {
+    player1.draw()
+    // hand is 1.Card1, 2.Card2, 3.Card3
+    // play index out of bounds
+    player1.play(4)
+
+    val expected = new Board()
+    assertEquals(board, expected)
+
+    player2.draw()
+    // hand is 1.Card1, 2.Card2, 3.Card3
+    player2.play(4)
+
+    assertEquals(board, expected)
+  }
+
+  test("Can't play if index is less than zero or zero") {
+    player1.draw()
+    player1.play(-1)
+
+    val expected = new Board
+    assertEquals(board, expected)
+
+    player1.play(0)
+
+    assertEquals(board, expected)
+
+    player2.draw()
+    player2.play(-1)
+
+    assertEquals(board, expected)
+
+    player2.play(0)
+
+    assertEquals(board, expected)
+  }
 }
