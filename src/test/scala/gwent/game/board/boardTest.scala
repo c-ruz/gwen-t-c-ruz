@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.game.board
 
-import cl.uchile.dcc.gwent.game.card.{MeleeCard, RangedCard, SiegeCard, WeatherCard}
+import cl.uchile.dcc.gwent.game.card.{MeleeCard, RangedCard, SiegeCard, WeatherCard, NullCard}
 import cl.uchile.dcc.gwent.game.card.handler.{Deck, Hand}
 import cl.uchile.dcc.gwent.game.players.{Computer, Player}
 import munit.FunSuite
@@ -19,6 +19,7 @@ class boardTest extends FunSuite {
   val Card3 = new SiegeCard("Diral, dimensión espiral", 5)
   val Card4 = new WeatherCard("Escarcha mordiente")
   val Card5 = new WeatherCard("Clima despejado")
+  val NullCard = new NullCard()
   val deckName = "Xan-kei deck 1"
   val deckName2 = "Xan-kei deck 2"
   val gems = 3
@@ -84,11 +85,13 @@ class boardTest extends FunSuite {
     val expected2 = List(Card2)
     val expected3 = List(Card3)
     val expected4 = List()
+    val expected5 = new NullCard()
+
     // checking if Card1, Card2 and Card3 are where they should be
     assertEquals(board.playerArmy.MeleeFormation, expected1)
     assertEquals(board.playerArmy.RangedFormation, expected2)
     assertEquals(board.playerArmy.SiegeFormation, expected3)
-    assertEquals(board.WeatherSlot, expected4)
+    assertEquals(board.WeatherSlot, expected5)
     // checking if we are only adding in player half
     assertEquals(board.computerArmy.MeleeFormation, expected4)
     assertEquals(board.computerArmy.RangedFormation, expected4)
@@ -109,12 +112,13 @@ class boardTest extends FunSuite {
     val expected2 = List(Card2)
     val expected3 = List(Card3)
     val expected4 = List()
+    val expected5 = new NullCard()
 
     // checking if Card2 is where it should be
     assertEquals(board.computerArmy.MeleeFormation, expected1)
     assertEquals(board.computerArmy.RangedFormation, expected2)
     assertEquals(board.computerArmy.SiegeFormation, expected3)
-    assertEquals(board.WeatherSlot, expected4)
+    assertEquals(board.WeatherSlot, expected5)
     // checking if we are only adding in computer half
     assertEquals(board.playerArmy.MeleeFormation, expected4)
     assertEquals(board.playerArmy.RangedFormation, expected4)
@@ -125,14 +129,14 @@ class boardTest extends FunSuite {
     player1.draw(4)
     player1.play(4)
 
-    val expected1 = List(Card4)
-    assert(board.WeatherSlot.equals(expected1))
+    val expected1 = Card4
+    assertEquals(Card4, expected1)
 
     player2.draw(4)
     player2.play(4)
 
-    val expected2 = List(Card5, Card4)
-    assert(board.WeatherSlot.equals(expected2))
+    val expected2 = Card5
+    assertEquals(Card5, expected2)
   }
 
   test("Testing structural equality of UnitBoard with already placed cards") {
@@ -196,5 +200,21 @@ class boardTest extends FunSuite {
     player2.play(0)
 
     assertEquals(board, expected)
+  }
+
+  test("testing the no placement of NullCard") {
+    NullCard.placeOnPlayer(board)
+    NullCard.placeOnComputer(board)
+
+    val expected1 = List()
+    val expected2 = new NullCard()
+
+    assertEquals(board.playerArmy.MeleeFormation, expected1)
+    assertEquals(board.playerArmy.RangedFormation, expected1)
+    assertEquals(board.playerArmy.SiegeFormation, expected1)
+    assertEquals(board.computerArmy.MeleeFormation, expected1)
+    assertEquals(board.computerArmy.RangedFormation, expected1)
+    assertEquals(board.computerArmy.SiegeFormation, expected1)
+    assertEquals(board.WeatherSlot, expected2)
   }
 }
