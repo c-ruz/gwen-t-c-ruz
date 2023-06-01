@@ -18,6 +18,11 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
                 private val _deck: Deck, private val _hand: Hand, _board: Board) extends Equals {
 
   /**
+   * If constructor gems value < 0, then set them to 0.
+   */
+  gems_(gems)
+
+  /**
    * ====================
    * Getters y Setters
    * ====================

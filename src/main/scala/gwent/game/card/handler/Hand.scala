@@ -89,7 +89,7 @@ class Hand(private val _handCapacity: Int) extends Equals {
   /**
    * Adds a card to the hand. If there is not space left, does nothing.
    *
-   * @card  card to be added.
+   * @param  card card to be added.
    */
   def addCard(card: Card): Unit = {
     if (this.holding < this.handCapacity) {

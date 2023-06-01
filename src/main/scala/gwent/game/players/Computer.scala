@@ -11,7 +11,6 @@ class Computer(name: String, gems: Int,
   /**
    * If constructor gems value < 0, then set them to 0.
    */
-  gems_(gems)
 
   /**
    * =======================

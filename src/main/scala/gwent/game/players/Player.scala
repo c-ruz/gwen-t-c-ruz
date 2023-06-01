@@ -7,10 +7,6 @@ import cl.uchile.dcc.gwent.game.card.Card
 
 class Player(name: String, gems: Int,
              deck: Deck, hand: Hand, board: Board) extends AbsPlayer(name, gems, deck, hand, board) with Equals {
-  /**
-   * If constructor gems value < 0, then set them to 0.
-   */
-  gems_(gems)
 
 
   /**

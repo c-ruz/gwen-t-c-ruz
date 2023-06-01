@@ -35,7 +35,7 @@ class WeatherCard(val _name: String) extends Card with Equals {
   override def hashCode(): Int = Objects.hash(classOf[WeatherCard], name)
 
   /**
-   * Both methods place a weather card in the board received.
+   * Both methods place a weather card in the Weather Slot of the board received.
    * @param board the board where the card is going to be placed.
    */
   def placeOnPlayer(board: Board): Unit = {
