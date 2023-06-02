@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.game.board
 
-import gwent.game.card.{Card, MeleeCard, NullCard, RangedCard, SiegeCard, WeatherCard}
+import gwent.game.card.{Card, MeleeCard, RangedCard, SiegeCard, WeatherCard}
 
 class Board() extends Equals {
   /**
@@ -24,10 +24,9 @@ class Board() extends Equals {
    * ==================
    * Weather card slot
    * ==================
-   * Creates an empty list for WeatherCard cards. The list keeps track of the cards played, but only
-   * the one on top is active.
+   * Slot for the weather card, initially empty.
    */
-  private var _weatherSlot: WeatherCard = _
+  private var _weatherSlot: Option[WeatherCard] = None 
 
   /**
    * ========
@@ -36,7 +35,7 @@ class Board() extends Equals {
    */
   def playerArmy: UnitBoard = _playerArmy
   def computerArmy: UnitBoard = _computerArmy
-  def WeatherSlot: Card = new NullCard()
+  def WeatherSlot: Option[WeatherCard] = _weatherSlot
 
   /**
    * ===============
@@ -49,7 +48,7 @@ class Board() extends Equals {
    * @param card  Card of type WeatherCard to be added.
    */
   def placeWeather(card: WeatherCard): Unit = {
-    _weatherSlot = card
+    _weatherSlot = Some(card)
   }
 
   /**
