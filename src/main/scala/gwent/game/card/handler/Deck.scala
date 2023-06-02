@@ -40,9 +40,12 @@ class Deck(private val _name: String,
    */
   def name: String = _name
   def capacity: Int = _capacity
-  def holding: Int = _holding
+  def holding: Int = {
+    val clone = _holding
+    clone
+  }
 
-  def holding_(NewHolding: Int): Unit = {
+  private def holding_(NewHolding: Int): Unit = {
     _holding = math.max(0, NewHolding)
   }
 

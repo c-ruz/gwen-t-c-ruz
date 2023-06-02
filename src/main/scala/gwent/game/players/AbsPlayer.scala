@@ -28,7 +28,10 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
    * ====================
    */
   def name: String = _name
-  def gems: Int = _gems
+  def gems: Int = {
+    val clone = _gems
+    clone
+  }
   def hand: Hand = _hand
   def deck: Deck = _deck
   def board: Board = _board
@@ -70,9 +73,9 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
   
   def draw(n: Int = 3): Unit = {
     var n2 = math.max(0,n)
-    while (hand.holding < hand.handCapacity &&
-    deck.holding != 0 && n2 != 0) {
-      hand.addCard(deck.getFirst)
+    while (_hand.holding < _hand.handCapacity &&
+    _deck.holding != 0 && n2 != 0) {
+      hand.addCard(_deck.getFirst)
       n2 -= 1
     }
   }

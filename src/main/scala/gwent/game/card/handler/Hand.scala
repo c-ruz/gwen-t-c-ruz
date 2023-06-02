@@ -36,9 +36,12 @@ class Hand(private val _handCapacity: Int) extends Equals {
    */
   def handCapacity: Int = _handCapacity
 
-  def holding: Int = _holding
+  def holding: Int = {
+    val clone = _holding
+    clone
+  }
 
-  def holding_(NewHolding: Int): Unit = {
+  private def holding_(NewHolding: Int): Unit = {
     _holding = math.max(0, NewHolding)
   }
 

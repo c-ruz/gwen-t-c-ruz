@@ -18,9 +18,6 @@ class Computer(name: String, gems: Int,
    * =======================
    */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[Computer]
-  override def equals(obj: Any): Boolean = {
-    super.equals(obj)
-  }
 
   /**
    * ===========================

@@ -2,8 +2,8 @@ package cl.uchile.dcc
 package gwent.game.players
 
 import gwent.game.card.handler.{Deck, Hand}
-import cl.uchile.dcc.gwent.game.board.Board
-import cl.uchile.dcc.gwent.game.card.Card
+import gwent.game.board.Board
+import gwent.game.card.Card
 
 class Player(name: String, gems: Int,
              deck: Deck, hand: Hand, board: Board) extends AbsPlayer(name, gems, deck, hand, board) with Equals {
@@ -15,9 +15,6 @@ class Player(name: String, gems: Int,
    * =======================
    */
   override def canEqual(that: Any): Boolean = that.isInstanceOf[Player]
-  override def equals(obj: Any): Boolean = {
-    super.equals(obj)
-  }
 
   /**
    * ===========================
