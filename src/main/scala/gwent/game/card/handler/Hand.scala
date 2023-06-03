@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.game.card.handler
 
-import cl.uchile.dcc.gwent.game.card.Card
+import gwent.game.card.Card
 import scala.collection.mutable.ArrayBuffer
 
 /**
@@ -9,7 +9,7 @@ import scala.collection.mutable.ArrayBuffer
  * @param _handCapacity How many cards can be on a hand.
  */
 class Hand(private val _handCapacity: Int) extends Equals {
-  private val cards: ArrayBuffer[Card] = ArrayBuffer()
+  private val _cards: ArrayBuffer[Card] = ArrayBuffer()
   private var _holding = 0
 
   /**
@@ -21,10 +21,10 @@ class Hand(private val _handCapacity: Int) extends Equals {
     this(capacity)
     val amount = list.length
     if (amount <= capacity) {
-      cards ++= list
+      _cards ++= list
       holding_(amount)
     } else {
-      cards ++= list.take(capacity)
+      _cards ++= list.take(capacity)
       holding_(capacity)
     }
   }
@@ -38,6 +38,10 @@ class Hand(private val _handCapacity: Int) extends Equals {
 
   def holding: Int = {
     val clone = _holding
+    clone
+  }
+  def cards: ArrayBuffer[Card] = {
+    val clone = _cards.clone()
     clone
   }
 
@@ -68,9 +72,9 @@ class Hand(private val _handCapacity: Int) extends Equals {
    * @param other The other hand to compare.
    */
   def sameCards(other: Hand): Boolean = {
-    if (this.cards.length == other.cards.length) {
-      val compare = other.cards.clone()
-      for (card <- this.cards) {
+    if (this._cards.length == other._cards.length) {
+      val compare = other._cards.clone()
+      for (card <- this._cards) {
         compare -= card
       }
       if (compare.isEmpty) {
@@ -96,7 +100,7 @@ class Hand(private val _handCapacity: Int) extends Equals {
    */
   def addCard(card: Card): Unit = {
     if (this.holding < this.handCapacity) {
-      this.cards += card
+      this._cards += card
       this.holding_(holding + 1)
     }
   }
@@ -107,7 +111,7 @@ class Hand(private val _handCapacity: Int) extends Equals {
    */
   def removeCard(index: Int): Unit = {
     if (index > 0 && index <= holding) {
-      cards.remove(index-1)
+      _cards.remove(index-1)
       holding_(holding-1)
     }
   }
@@ -119,6 +123,6 @@ class Hand(private val _handCapacity: Int) extends Equals {
    * @param index The index of the card in the hand
    */
   def getCard(index: Int): Card = {
-    cards(index-1)
+    _cards(index-1)
   }
 }

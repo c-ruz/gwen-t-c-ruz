@@ -2,7 +2,7 @@ package cl.uchile.dcc
 package gwent.game.card
 
 import gwent.game.players.{Computer, Player}
-import cl.uchile.dcc.gwent.game.board.Board
+import gwent.game.board.Board
 
 /**
  * Represents the common structure of a card in the game.

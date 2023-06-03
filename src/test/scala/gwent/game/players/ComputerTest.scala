@@ -1,9 +1,9 @@
 package cl.uchile.dcc
 package gwent.game.players
 
-import cl.uchile.dcc.gwent.game.board.Board
-import cl.uchile.dcc.gwent.game.card.{MeleeCard, SiegeCard, WeatherCard}
-import cl.uchile.dcc.gwent.game.card.handler.{Deck, Hand}
+import gwent.game.board.Board
+import gwent.game.card.{MeleeCard, SiegeCard, WeatherCard}
+import gwent.game.card.handler.{Deck, Hand}
 import scala.collection.mutable.ArrayBuffer
 import munit.FunSuite
 
@@ -52,7 +52,7 @@ class ComputerTest extends FunSuite {
     // This player has an equivalent name and deck
     val deck2 = new Deck(ArrayBuffer(Card1, Card2, Card3, Card4, Card5), deckName, deckCap)
     val hand2 = new Hand(handCap)
-    val player2 = new Player("CPU", gems, deck1, hand1, board)
+    val player2 = new Player("CPU", gems, deck2, hand2, board)
     assert(!player1.equals(player2))
   }
 

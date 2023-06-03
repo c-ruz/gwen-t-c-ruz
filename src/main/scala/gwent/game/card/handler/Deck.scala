@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.game.card.handler
 
-import cl.uchile.dcc.gwent.game.card.Card
+import gwent.game.card.Card
 import scala.collection.mutable.ArrayBuffer
 
 /**
@@ -11,7 +11,7 @@ import scala.collection.mutable.ArrayBuffer
  */
 class Deck(private val _name: String,
            private val _capacity: Int) extends Equals {
-  private val cards: ArrayBuffer[Card] = ArrayBuffer()
+  private val _cards: ArrayBuffer[Card] = ArrayBuffer()
   private var _holding = 0
   /**
    * Represents a deck of cards used in the game.
@@ -25,10 +25,10 @@ class Deck(private val _name: String,
     this(_name, _capacity)
     val amount = list.length
     if (amount <= capacity) {
-      cards ++= list
+      _cards ++= list
       holding_(amount)
     } else {
-      cards ++= list.take(capacity)
+      _cards ++= list.take(capacity)
       holding_(capacity)
     }
   }
@@ -42,6 +42,10 @@ class Deck(private val _name: String,
   def capacity: Int = _capacity
   def holding: Int = {
     val clone = _holding
+    clone
+  }
+  def cards: ArrayBuffer[Card] = {
+    val clone = _cards.clone()
     clone
   }
 
@@ -70,9 +74,9 @@ class Deck(private val _name: String,
    * @param other The other deck to compare.
    */
   def sameCards(other: Deck): Boolean = {
-    if (this.cards.length == other.cards.length) {
-      val compare = other.cards.clone()
-      for (card <- this.cards) {
+    if (this._cards.length == other._cards.length) {
+      val compare = other._cards.clone()
+      for (card <- this._cards) {
         compare -= card
       }
       if (compare.isEmpty) {
@@ -95,15 +99,15 @@ class Deck(private val _name: String,
    * Shuffles the cards in the deck.
    */
   def mix(): Unit = {
-    util.Random.shuffle(this.cards)
+    util.Random.shuffle(this._cards)
   }
 
   /**
    * Returns the first card in the deck and removes it.
    */
   def getFirst: Card = {
-    val card = this.cards(0)
-    this.cards.remove(0)
+    val card = this._cards(0)
+    this._cards.remove(0)
     this.holding_(holding-1)
     card
   }
@@ -114,7 +118,7 @@ class Deck(private val _name: String,
    */
   def addCard(card: Card): Unit = {
     if (this.holding < this.capacity) {
-      this.cards += card
+      this._cards += card
       this.holding_(holding+1)
     }
   }

@@ -65,17 +65,18 @@ class PlayerTest extends FunSuite {
     // player cannot exceed hand capacity or draw when deck is empty
     player1.draw(1)
     assertEquals(player1.hand, expectedHand)
-    // setting empty hand
-    player1.hand.removeCard(1)
-    player1.hand.removeCard(1)
-    player1.hand.removeCard(1)
-    player1.draw()
+
+    // setting a new player with the same deck but empty hand.
+    val deck3 = new Deck(ArrayBuffer(Card4,Card5), deckName, deckCap)
+    val hand3 = new Hand(handCap)
+    val player3 = new Player("Player3", gems, deck3, hand3, board)
+    player3.draw()
 
     // since we only have 2 cards in the deck, hand should only draw 2 instead of 3 cards.
     val expectedHand2 = new Hand(ArrayBuffer(Card4, Card5), handCap)
     val expectedDeck2 = new Deck(deckName, deckCap)
-    assertEquals(player1.hand, expectedHand2)
-    assertEquals(player1.deck, expectedDeck2)
+    assertEquals(player3.hand, expectedHand2)
+    assertEquals(player3.deck, expectedDeck2)
   }
 
   test("testing draw with negative value") {

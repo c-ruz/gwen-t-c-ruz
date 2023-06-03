@@ -3,8 +3,8 @@ package gwent.game.players
 
 import gwent.game.card.handler.{Deck, Hand}
 import gwent.game.players.AbsPlayer
-import cl.uchile.dcc.gwent.game.board.Board
-import cl.uchile.dcc.gwent.game.card.Card
+import gwent.game.board.Board
+import gwent.game.card.Card
 
 class Computer(name: String, gems: Int,
               deck: Deck, hand: Hand, board: Board) extends AbsPlayer(name, gems, deck, hand, board) {

@@ -2,8 +2,8 @@ package cl.uchile.dcc
 package gwent.game.card
 
 import gwent.game.card.AbsUnitCard
-import cl.uchile.dcc.gwent.game.board.Board
-import cl.uchile.dcc.gwent.game.players.{Computer, Player}
+import gwent.game.board.Board
+import gwent.game.players.{Computer, Player}
 
 import java.util.Objects
 

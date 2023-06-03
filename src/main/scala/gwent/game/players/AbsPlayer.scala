@@ -24,7 +24,7 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
 
   /**
    * ====================
-   * Getters y Setters
+   * Getters and Setters
    * ====================
    */
   def name: String = _name
@@ -32,14 +32,20 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
     val clone = _gems
     clone
   }
-  def hand: Hand = _hand
-  def deck: Deck = _deck
+  def hand: Hand = {
+    val clone = new Hand(_hand.cards, _hand.handCapacity)
+    clone
+  }
+  def deck: Deck = {
+    val clone = new Deck(_deck.cards, _deck.name,_deck.capacity)
+    clone
+  }
   def board: Board = _board
   /**
    * Sets new value for gems, min == 0.
    * @param NewGems New gem value to set.
    */
-  protected def gems_(NewGems: Int): Unit = {
+  private def gems_(NewGems: Int): Unit = {
     _gems = math.max(0, NewGems)
   }
 
@@ -75,7 +81,7 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
     var n2 = math.max(0,n)
     while (_hand.holding < _hand.handCapacity &&
     _deck.holding != 0 && n2 != 0) {
-      hand.addCard(_deck.getFirst)
+      _hand.addCard(_deck.getFirst)
       n2 -= 1
     }
   }
@@ -83,7 +89,7 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
    * Reduces the player's health (gems) by one.
    */
   def hit(): Unit = {
-    gems_(gems - 1)
+    gems_(_gems - 1)
   }
 
   /**
