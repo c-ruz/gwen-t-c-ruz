@@ -68,6 +68,7 @@ class boardTest extends FunSuite {
     val expected2 = new UnitBoard
     assert(board.equals(expected))
     assert(!board.equals(expected2))
+    assert(board.WeatherSlot.isEmpty)
   }
 
   test("Cards played by a player are put in the player's half") {
