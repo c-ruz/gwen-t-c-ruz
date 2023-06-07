@@ -53,3 +53,13 @@ List of relevant methods' implementation.
 
 Please read documentation in each class for more details.
 
+---
+
+States of the game
+-------
+#### State pattern implementation to model game flow
+
+![StateDiagram](img/State_diagram-25.jpg)
+
+---
+
