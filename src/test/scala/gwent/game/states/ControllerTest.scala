@@ -19,6 +19,13 @@ class ControllerTest extends FunSuite{
 
   test("Game starts in Start state") {
     assert(controller.isStart)
+    assert(!controller.isFirstDraw)
+    assert(!controller.isPlayerTurn)
+    assert(!controller.isCpuTurn)
+    assert(!controller.isPlayerExtendedTurn)
+    assert(!controller.isCpuExtendedTurn)
+    assert(!controller.isEndPhase)
+    assert(!controller.isRoundStart)
   }
 
   test("Start state can transition to FirstDraw") {
@@ -30,7 +37,14 @@ class ControllerTest extends FunSuite{
     assertThrows(classOf[Exception], () => controller.initialDraw())
     // valid transition
     controller.initializeGame()
+    assert(!controller.isStart)
     assert(controller.isFirstDraw)
+    assert(!controller.isPlayerTurn)
+    assert(!controller.isCpuTurn)
+    assert(!controller.isPlayerExtendedTurn)
+    assert(!controller.isCpuExtendedTurn)
+    assert(!controller.isEndPhase)
+    assert(!controller.isRoundStart)
   }
 
   test("FirstDraw can transition to PlayerTurn") {
@@ -44,7 +58,14 @@ class ControllerTest extends FunSuite{
     assertThrows(classOf[Exception], () => controller.bothDraw())
     // set controller
     controller.initialDraw()
+    assert(!controller.isStart)
+    assert(!controller.isFirstDraw)
     assert(controller.isPlayerTurn)
+    assert(!controller.isCpuTurn)
+    assert(!controller.isPlayerExtendedTurn)
+    assert(!controller.isCpuExtendedTurn)
+    assert(!controller.isEndPhase)
+    assert(!controller.isRoundStart)
   }
 
   test("PlayerTurn can transition to CPUTurn") {
@@ -58,7 +79,14 @@ class ControllerTest extends FunSuite{
     assertThrows(classOf[Exception], () => controller.initialDraw())
     // valid transition
     controller.play()
+    assert(!controller.isStart)
+    assert(!controller.isFirstDraw)
+    assert(!controller.isPlayerTurn)
     assert(controller.isCpuTurn)
+    assert(!controller.isPlayerExtendedTurn)
+    assert(!controller.isCpuExtendedTurn)
+    assert(!controller.isEndPhase)
+    assert(!controller.isRoundStart)
   }
 
   test("PlayerTurn can transition to CpuExtendTurn") {
@@ -67,7 +95,14 @@ class ControllerTest extends FunSuite{
     controller.initialDraw()
     // valid transition
     controller.pass()
+    assert(!controller.isStart)
+    assert(!controller.isFirstDraw)
+    assert(!controller.isPlayerTurn)
+    assert(!controller.isCpuTurn)
+    assert(!controller.isPlayerExtendedTurn)
     assert(controller.isCpuExtendedTurn)
+    assert(!controller.isEndPhase)
+    assert(!controller.isRoundStart)
   }
 
   test("CpuTurn can transition to PlayerTurn") {
@@ -82,7 +117,14 @@ class ControllerTest extends FunSuite{
     assertThrows(classOf[Exception], () => controller.initialDraw())
     // valid transition
     controller.play()
+    assert(!controller.isStart)
+    assert(!controller.isFirstDraw)
     assert(controller.isPlayerTurn)
+    assert(!controller.isCpuTurn)
+    assert(!controller.isPlayerExtendedTurn)
+    assert(!controller.isCpuExtendedTurn)
+    assert(!controller.isEndPhase)
+    assert(!controller.isRoundStart)
   }
 
   test("CpuTurn can transition to PlayerExtendedTurn") {
@@ -92,7 +134,14 @@ class ControllerTest extends FunSuite{
     controller.play()
     // valid transition
     controller.pass()
+    assert(!controller.isStart)
+    assert(!controller.isFirstDraw)
+    assert(!controller.isPlayerTurn)
+    assert(!controller.isCpuTurn)
     assert(controller.isPlayerExtendedTurn)
+    assert(!controller.isCpuExtendedTurn)
+    assert(!controller.isEndPhase)
+    assert(!controller.isRoundStart)
   }
 
   test("CpuExtendedTurn can transition to itself") {
@@ -107,7 +156,14 @@ class ControllerTest extends FunSuite{
     assertThrows(classOf[Exception], () => controller.initialDraw())
     // valid transition
     controller.play()
+    assert(!controller.isStart)
+    assert(!controller.isFirstDraw)
+    assert(!controller.isPlayerTurn)
+    assert(!controller.isCpuTurn)
+    assert(!controller.isPlayerExtendedTurn)
     assert(controller.isCpuExtendedTurn)
+    assert(!controller.isEndPhase)
+    assert(!controller.isRoundStart)
   }
 
   test("Cpu extended turn can transition to EndPhase") {
@@ -117,7 +173,14 @@ class ControllerTest extends FunSuite{
     controller.pass()
     // valid transition
     controller.pass()
+    assert(!controller.isStart)
+    assert(!controller.isFirstDraw)
+    assert(!controller.isPlayerTurn)
+    assert(!controller.isCpuTurn)
+    assert(!controller.isPlayerExtendedTurn)
+    assert(!controller.isCpuExtendedTurn)
     assert(controller.isEndPhase)
+    assert(!controller.isRoundStart)
   }
 
   test("PlayerExtendedTurn can transition to itself") {
@@ -133,7 +196,14 @@ class ControllerTest extends FunSuite{
     assertThrows(classOf[Exception], () => controller.initialDraw())
     // valid transition
     controller.play()
+    assert(!controller.isStart)
+    assert(!controller.isFirstDraw)
+    assert(!controller.isPlayerTurn)
+    assert(!controller.isCpuTurn)
     assert(controller.isPlayerExtendedTurn)
+    assert(!controller.isCpuExtendedTurn)
+    assert(!controller.isEndPhase)
+    assert(!controller.isRoundStart)
   }
 
   test("PlayerExtendedTurn can transition to EndPhase") {
@@ -144,7 +214,14 @@ class ControllerTest extends FunSuite{
     controller.pass()
     // valid transition
     controller.pass()
+    assert(!controller.isStart)
+    assert(!controller.isFirstDraw)
+    assert(!controller.isPlayerTurn)
+    assert(!controller.isCpuTurn)
+    assert(!controller.isPlayerExtendedTurn)
+    assert(!controller.isCpuExtendedTurn)
     assert(controller.isEndPhase)
+    assert(!controller.isRoundStart)
   }
 
   test("EndPhase can return to RoundStart") {
@@ -161,6 +238,13 @@ class ControllerTest extends FunSuite{
     assertThrows(classOf[Exception], () => controller.initialDraw())
     // valid transition
     controller.hit()
+    assert(!controller.isStart)
+    assert(!controller.isFirstDraw)
+    assert(!controller.isPlayerTurn)
+    assert(!controller.isCpuTurn)
+    assert(!controller.isPlayerExtendedTurn)
+    assert(!controller.isCpuExtendedTurn)
+    assert(!controller.isEndPhase)
     assert(controller.isRoundStart)
   }
 
@@ -179,6 +263,13 @@ class ControllerTest extends FunSuite{
     assertThrows(classOf[Exception], () => controller.initialDraw())
     // valid transition
     controller.bothDraw()
+    assert(!controller.isStart)
+    assert(!controller.isFirstDraw)
     assert(controller.isPlayerTurn)
+    assert(!controller.isCpuTurn)
+    assert(!controller.isPlayerExtendedTurn)
+    assert(!controller.isCpuExtendedTurn)
+    assert(!controller.isEndPhase)
+    assert(!controller.isRoundStart)
   }
 }
