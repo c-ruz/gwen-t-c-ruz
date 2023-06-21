@@ -2,6 +2,7 @@ package cl.uchile.dcc
 package gwent.game.states
 
 import cl.uchile.dcc.gwent.game.Controller
+import cl.uchile.dcc.gwent.game.states.exception.InvalidTransitionException
 
 class State {
   private var controller: Option[Controller] = None
@@ -10,20 +11,18 @@ class State {
     this.controller = Some(controller)
   }
 
-  protected def changeState(state: State): Unit = {
-    if (controller.isDefined) {
-      controller.get.setState(state)
-    }
+  protected def changeState(c: Controller, state: State): Unit = {
+    c.setState(state)
   }
 
   def error() = throw new InvalidTransitionException("Wrong State")
 
-  def bothDraw(): Unit = error()
-  def play(): Unit = error()
-  def pass(): Unit = error()
-  def hit(): Unit = error()
-  def initializeGame(): Unit = error()
-  def initialDraw(): Unit = error()
+  def bothDraw(c: Controller): Unit = error()
+  def play(c: Controller): Unit = error()
+  def pass(c: Controller): Unit = error()
+  def hit(c: Controller): Unit = error()
+  def initializeGame(c: Controller): Unit = error()
+  def initialDraw(c: Controller): Unit = error()
 
   def isStart: Boolean = false
   def isFirstDraw: Boolean = false

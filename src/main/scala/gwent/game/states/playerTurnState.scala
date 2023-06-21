@@ -1,14 +1,16 @@
 package cl.uchile.dcc
 package gwent.game.states
 
+import gwent.game.Controller
+
 class playerTurnState extends State {
   override def isPlayerTurn: Boolean = true
 
-  override def play(): Unit = {
-    this.changeState(new cpuTurnState)
+  override def play(c: Controller): Unit = {
+    this.changeState(c, new cpuTurnState)
   }
 
-  override def pass(): Unit = {
-    this.changeState(new cpuExtendTurn)
+  override def pass(c: Controller): Unit = {
+    this.changeState(c, new cpuExtendTurn)
   }
 }

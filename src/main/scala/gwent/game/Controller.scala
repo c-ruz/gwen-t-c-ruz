@@ -16,12 +16,12 @@ class Controller {
     state.setController(this)
   }
 
-  def bothDraw(): Unit = state.bothDraw()
-  def play(): Unit = state.play()
-  def pass(): Unit = state.pass()
-  def hit(): Unit = state.hit()
-  def initializeGame(): Unit = state.initializeGame()
-  def initialDraw(): Unit = state.initialDraw()
+  def bothDraw(): Unit = state.bothDraw(this)
+  def play(): Unit = state.play(this)
+  def pass(): Unit = state.pass(this)
+  def hit(): Unit = state.hit(this)
+  def initializeGame(): Unit = state.initializeGame(this)
+  def initialDraw(): Unit = state.initialDraw(this)
 
   def isStart: Boolean = state.isStart
   def isFirstDraw: Boolean = state.isFirstDraw
