@@ -37,7 +37,7 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
     clone
   }
   def deck: Deck = {
-    val clone = new Deck(_deck.cards, _deck.name,_deck.capacity)
+    val clone = new Deck(_deck.cards, _deck.name, _deck.capacity)
     clone
   }
   def board: Board = _board
