@@ -2,15 +2,19 @@ package cl.uchile.dcc
 package gwent.game.players
 
 import gwent.game.board.Board
-import gwent.game.card.{MeleeCard, SiegeCard, WeatherCard}
+import gwent.game.card.WeatherCard
 import gwent.game.card.handler.{Deck, Hand}
+
+import cl.uchile.dcc.gwent.game.card.units.{MeleeCard, SiegeCard}
+import cl.uchile.dcc.gwent.game.effects.unitCardEffects.NullEffect
+
 import scala.collection.mutable.ArrayBuffer
 import munit.FunSuite
 
 class ComputerTest extends FunSuite {
-  val Card1 = new MeleeCard("Eta, el Errabundo", 5)
-  val Card2 = new MeleeCard("Zeeh, la primera luz", 3)
-  val Card3 = new SiegeCard("Diral, dimensión espiral", 5)
+  val Card1 = new MeleeCard("Eta, el Errabundo", 5, new NullEffect)
+  val Card2 = new MeleeCard("Zeeh, la primera luz", 3, new NullEffect)
+  val Card3 = new SiegeCard("Diral, dimensión espiral", 5, new NullEffect)
   val Card4 = new WeatherCard("Escarcha mordiente")
   val Card5 = new WeatherCard("Clima despejado")
   val deckName = "Xan-kei deck"
