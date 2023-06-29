@@ -1,7 +1,8 @@
 package cl.uchile.dcc
 package gwent.game.board
 
-import gwent.game.card.{Card, MeleeCard, RangedCard, SiegeCard, WeatherCard}
+import gwent.game.card.{Card, WeatherCard}
+import cl.uchile.dcc.gwent.game.card.units.{MeleeCard, RangedCard, SiegeCard}
 
 class Board() extends Equals {
   /**

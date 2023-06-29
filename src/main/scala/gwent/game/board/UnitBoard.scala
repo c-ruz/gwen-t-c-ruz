@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.game.board
 
-import gwent.game.card.{MeleeCard, RangedCard, SiegeCard}
+import cl.uchile.dcc.gwent.game.card.units.{MeleeCard, RangedCard, SiegeCard, UnitCard}
 
 class UnitBoard extends Equals {
 
@@ -17,9 +17,18 @@ class UnitBoard extends Equals {
    * Getters
    * ==========
    */
-  def MeleeFormation: List[MeleeCard] = _MeleeFormation
-  def RangedFormation: List[RangedCard] = _RangedFormation
-  def SiegeFormation: List[SiegeCard] = _SiegeFormation
+  def MeleeFormation: List[MeleeCard] = {
+    val clone = List[MeleeCard]()
+    clone ::: _MeleeFormation
+  }
+  def RangedFormation: List[RangedCard] = {
+    val clone = List[RangedCard]()
+    clone ::: _RangedFormation
+  }
+  def SiegeFormation: List[SiegeCard] = {
+    val clone = List[SiegeCard]()
+    clone ::: _SiegeFormation
+  }
   /**
    * =========
    * Methods
@@ -32,6 +41,7 @@ class UnitBoard extends Equals {
    */
   def placeMelee(card: MeleeCard): Unit = {
     _MeleeFormation = card :: _MeleeFormation
+    card.effect.activate(_MeleeFormation)
   }
   /**
    * Places a RangedCard in the RangedFormation list.
@@ -39,6 +49,7 @@ class UnitBoard extends Equals {
    */
   def placeRanged(card: RangedCard): Unit = {
     _RangedFormation = card :: _RangedFormation
+    card.effect.activate(_RangedFormation)
   }
   /**
    * Places a SiegeCard in the SiegeFormation list.
@@ -46,6 +57,7 @@ class UnitBoard extends Equals {
    */
   def placeSiege(card: SiegeCard): Unit = {
     _SiegeFormation = card :: _SiegeFormation
+    card.effect.activate(_SiegeFormation)
   }
 
   /**
