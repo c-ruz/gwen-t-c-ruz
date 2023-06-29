@@ -4,6 +4,8 @@ package gwent.game.card
 import gwent.game.players.{Computer, Player}
 import gwent.game.board.Board
 
+import cl.uchile.dcc.gwent.game.effects.Effect
+
 /**
  * Represents the common structure of a card in the game.
  */

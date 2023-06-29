@@ -1,9 +1,12 @@
 package cl.uchile.dcc
-package gwent.game.card
+package gwent.game.card.units
 
 import gwent.game.board.Board
-import gwent.game.players.{Player, Computer}
-import cl.uchile.dcc.gwent.game.card.units.AbsUnitCard
+import gwent.game.card.units.AbsUnitCard
+import gwent.game.players.{Computer, Player}
+
+import cl.uchile.dcc.gwent.game.effects.Effect
+
 import java.util.Objects
 
 /**
@@ -11,7 +14,7 @@ import java.util.Objects
  * @param name The name of the card.
  * @param str  The strength of the card.            
  */
-class MeleeCard(name: String, str: Int) extends AbsUnitCard(name, str) with Equals {
+class MeleeCard(name: String, str: Int, effect: Effect) extends AbsUnitCard(name, str, effect) with Equals {
   override def canEqual(that: Any): Boolean = that.isInstanceOf[MeleeCard]
 
   override def equals(obj: Any): Boolean = {

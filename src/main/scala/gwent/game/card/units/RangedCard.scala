@@ -5,6 +5,8 @@ import gwent.game.board.Board
 import gwent.game.card.units.AbsUnitCard
 import gwent.game.players.{Computer, Player}
 
+import cl.uchile.dcc.gwent.game.effects.Effect
+
 import java.util.Objects
 
 /**
@@ -12,7 +14,7 @@ import java.util.Objects
  * @param name The name of the card.
  * @param str  The strength of the card.            
  */
-class RangedCard(name: String, str: Int) extends AbsUnitCard(name, str) with Equals {
+class RangedCard(name: String, str: Int, effect: Effect) extends AbsUnitCard(name, str, effect) with Equals {
   override def canEqual(that: Any): Boolean = that.isInstanceOf[RangedCard]
 
   override def equals(obj: Any): Boolean = {
