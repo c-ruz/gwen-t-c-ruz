@@ -13,25 +13,23 @@ import gwent.game.players.{Player, Computer}
 abstract class AbsUnitCard(private val _name: String, private var _str: Int) extends Card {
   // Fixes card having negative strength
   str_(_str)
-
+  
+  private var _currStr = _str
+  
   /**
    * ===========================================================
    *  Getters and Setters
    * ===========================================================
    */
   def name: String = _name
-  def str: Int = {
-    val clone = _str
-    clone
-  }
+  def str: Int = _str
+  def currStr: Int = _currStr
+  
 
   private def str_(NewStr: Int): Unit = {
     _str = math.max(0, NewStr)
   }
-
-  /**
-   * ==============
-   * Class methods
-   * ==============
-   */
+  def currStr_(NewStr: Int): Unit = {
+    _currStr = math.max(0, NewStr)
+  }
 }
