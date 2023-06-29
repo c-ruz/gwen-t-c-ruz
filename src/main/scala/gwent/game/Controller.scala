@@ -8,12 +8,10 @@ class Controller {
   
   def setState(aState: State) = {
     state = aState
-    state.setController(this)
   }
   
   def startGame(): Unit = {
     state = new StartState()
-    state.setController(this)
   }
 
   def bothDraw(): Unit = state.bothDraw(this)
