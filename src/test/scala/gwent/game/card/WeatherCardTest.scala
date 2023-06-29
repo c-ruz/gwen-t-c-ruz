@@ -1,8 +1,10 @@
 package cl.uchile.dcc
 package gwent.game.card
 
-import gwent.game.card.{MeleeCard, WeatherCard}
+import gwent.game.card.WeatherCard
 
+import cl.uchile.dcc.gwent.game.card.units.MeleeCard
+import cl.uchile.dcc.gwent.game.effects.unitCardEffects.NullEffect
 import munit.FunSuite
 
 class WeatherCardTest extends FunSuite {
@@ -18,7 +20,7 @@ class WeatherCardTest extends FunSuite {
     assertEquals(expected, weather)
     assertEquals(expected.##, weather.##)
 
-    assert(!weather.equals(new MeleeCard(name, 10)))
+    assert(!weather.equals(new MeleeCard(name, 10, new NullEffect)))
 
     expected = new WeatherCard("Clima Despejado")
     assert(!weather.equals(expected))

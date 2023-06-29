@@ -1,17 +1,19 @@
 package cl.uchile.dcc
 package gwent.game.card.handler
 
-import gwent.game.card.{Card, MeleeCard, RangedCard}
+import gwent.game.card.Card
 import gwent.game.card.handler.Hand
 
+import cl.uchile.dcc.gwent.game.card.units.{MeleeCard, RangedCard}
+import cl.uchile.dcc.gwent.game.effects.unitCardEffects.NullEffect
 import munit.FunSuite
 
 import scala.collection.mutable.ArrayBuffer
 
 class HandTest extends FunSuite {
   val capacity = 2
-  val Card1 = new MeleeCard("Eta, el Errabundo", 5)
-  val Card2 = new RangedCard("Zeeh, la primera luz", 3)
+  val Card1 = new MeleeCard("Eta, el Errabundo", 5, new NullEffect)
+  val Card2 = new RangedCard("Zeeh, la primera luz", 3, new NullEffect)
   var cards: ArrayBuffer[Card] = _
   var hand1: Hand = _
   var hand2: Hand = _

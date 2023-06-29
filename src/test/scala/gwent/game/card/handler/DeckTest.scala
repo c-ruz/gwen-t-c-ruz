@@ -2,9 +2,11 @@ package cl.uchile.dcc
 package gwent.game.card.handler
 
 import gwent.game
-import gwent.game.card.{Card, MeleeCard, RangedCard, SiegeCard}
+import gwent.game.card.Card
 import gwent.game.card.handler.Deck
 
+import cl.uchile.dcc.gwent.game.card.units.{MeleeCard, RangedCard, SiegeCard}
+import cl.uchile.dcc.gwent.game.effects.unitCardEffects.NullEffect
 import munit.FunSuite
 
 import scala.collection.mutable.ArrayBuffer
@@ -12,9 +14,9 @@ import scala.collection.mutable.ArrayBuffer
 class DeckTest extends FunSuite{
   val deckName = "Xan-Kei Deck"
   val capacity = 3
-  val Card1 = new MeleeCard("Zeeh, la primera luz", 3)
-  val Card2 = new RangedCard("Emperador Ten", 5)
-  val Card3 = new SiegeCard("Soldado de terracota", 2)
+  val Card1 = new MeleeCard("Zeeh, la primera luz", 3, new NullEffect)
+  val Card2 = new RangedCard("Emperador Ten", 5, new NullEffect)
+  val Card3 = new SiegeCard("Soldado de terracota", 2, new NullEffect)
   var array2: ArrayBuffer[Card] = _
   var deck1: Deck = _
   var deck2: Deck = _
