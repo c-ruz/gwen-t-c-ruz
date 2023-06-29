@@ -5,12 +5,6 @@ import cl.uchile.dcc.gwent.game.Controller
 import cl.uchile.dcc.gwent.game.states.exception.InvalidTransitionException
 
 class State {
-  private var controller: Option[Controller] = None
-
-  def setController(controller: Controller): Unit = {
-    this.controller = Some(controller)
-  }
-
   protected def changeState(c: Controller, state: State): Unit = {
     c.setState(state)
   }
