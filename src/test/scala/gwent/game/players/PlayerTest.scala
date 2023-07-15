@@ -9,6 +9,7 @@ import gwent.game.players.Player
 
 import cl.uchile.dcc.gwent.game.card.units.{MeleeCard, SiegeCard}
 import cl.uchile.dcc.gwent.game.effects.unitCardEffects.NullEffect
+import cl.uchile.dcc.gwent.game.effects.weatherCardEffects.ClearWeather
 import munit.FunSuite
 
 import scala.collection.mutable.ArrayBuffer
@@ -17,8 +18,8 @@ class PlayerTest extends FunSuite {
   val Card1 = new MeleeCard("Eta, el Errabundo", 5, new NullEffect)
   val Card2 = new MeleeCard("Zeeh, la primera luz", 3, new NullEffect)
   val Card3 = new SiegeCard("Diral, dimensión espiral", 5, new NullEffect)
-  val Card4 = new WeatherCard("Escarcha mordiente")
-  val Card5 = new WeatherCard("Clima despejado")
+  val Card4 = new WeatherCard("Escarcha mordiente", new ClearWeather)
+  val Card5 = new WeatherCard("Clima despejado", new ClearWeather)
   val deckName = "Xan-kei deck"
   val gems = 3
   var deckCap = 5
@@ -96,5 +97,9 @@ class PlayerTest extends FunSuite {
   test("If player is constructed with negative gems value, set to 0") {
     val expected = new Player("Player 1", 0, deck1, hand1, board)
     assertEquals(new Player("Player 1", -3, deck1, hand1, board), expected)
+  }
+  test("algo"){
+    player1.deck.addCard(new MeleeCard("test",10, new NullEffect))
+    assertEquals(player1.deck, deck1)
   }
 }

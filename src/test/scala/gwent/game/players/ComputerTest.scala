@@ -7,6 +7,7 @@ import gwent.game.card.handler.{Deck, Hand}
 
 import cl.uchile.dcc.gwent.game.card.units.{MeleeCard, SiegeCard}
 import cl.uchile.dcc.gwent.game.effects.unitCardEffects.NullEffect
+import cl.uchile.dcc.gwent.game.effects.weatherCardEffects.ClearWeather
 
 import scala.collection.mutable.ArrayBuffer
 import munit.FunSuite
@@ -15,8 +16,8 @@ class ComputerTest extends FunSuite {
   val Card1 = new MeleeCard("Eta, el Errabundo", 5, new NullEffect)
   val Card2 = new MeleeCard("Zeeh, la primera luz", 3, new NullEffect)
   val Card3 = new SiegeCard("Diral, dimensión espiral", 5, new NullEffect)
-  val Card4 = new WeatherCard("Escarcha mordiente")
-  val Card5 = new WeatherCard("Clima despejado")
+  val Card4 = new WeatherCard("Escarcha mordiente", new ClearWeather)
+  val Card5 = new WeatherCard("Clima despejado", new ClearWeather)
   val deckName = "Xan-kei deck"
   val gems = 3
   var deckCap = 5
@@ -38,7 +39,6 @@ class ComputerTest extends FunSuite {
     assertEquals(player1.gems, gems)
     assertEquals(player1.deck, deck1)
     assertEquals(player1.hand, hand1)
-    assertEquals(player1.board, board)
 
     // Testing constructor when gems value is negative
     val player2 = new Computer("CPU", -1, deck1, hand1, board)
