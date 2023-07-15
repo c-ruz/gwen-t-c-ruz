@@ -5,18 +5,21 @@ import gwent.game.card.Card
 import gwent.game.board.Board
 import gwent.game.players.{Computer, Player}
 
+import cl.uchile.dcc.gwent.game.effects.Effect
+import cl.uchile.dcc.gwent.game.effects.weatherCardEffects.WeatherEffect
+
 import java.util.Objects
 
 /**
  * Represents a weather card used in the game.
  * @param _name The name of the card.
  */
-class WeatherCard(val _name: String) extends Card with Equals {
+class WeatherCard(private val _name: String, private val _effect: WeatherEffect) extends Card with Equals {
   /**
    * Gets the name of the card
    */
-  def name: String = _name
-
+  override def name: String = _name
+  override def effect: WeatherEffect = _effect
   /**
    * ==============================
    * Equals implementation
