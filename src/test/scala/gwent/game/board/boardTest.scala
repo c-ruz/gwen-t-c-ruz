@@ -7,6 +7,7 @@ import gwent.game.players.{Computer, Player}
 
 import cl.uchile.dcc.gwent.game.card.units.{MeleeCard, RangedCard, SiegeCard}
 import cl.uchile.dcc.gwent.game.effects.unitCardEffects.{MoraleSupport, NullEffect}
+import cl.uchile.dcc.gwent.game.effects.weatherCardEffects.ClearWeather
 import munit.FunSuite
 
 import scala.collection.mutable.ArrayBuffer
@@ -20,8 +21,8 @@ class boardTest extends FunSuite {
   val Card1 = new MeleeCard("Eta, el Errabundo", 5, new NullEffect)
   val Card2 = new RangedCard("Zeeh, la primera luz", 3, new NullEffect)
   val Card3 = new SiegeCard("Diral, dimensión espiral", 5, new NullEffect)
-  val Card4 = new WeatherCard("Escarcha mordiente")
-  val Card5 = new WeatherCard("Clima despejado")
+  val Card4 = new WeatherCard("Escarcha mordiente", new ClearWeather)
+  val Card5 = new WeatherCard("Clima despejado", new ClearWeather)
   val deckName = "Xan-kei deck 1"
   val deckName2 = "Xan-kei deck 2"
   val gems = 3
