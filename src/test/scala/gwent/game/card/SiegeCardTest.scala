@@ -16,10 +16,10 @@ class SiegeCardTest extends FunSuite{
 
   test("A SiegeCard can be created with a name and strength") {
     assertEquals(bomba.name, name)
-    assertEquals(bomba.str, str)
+    assertEquals(bomba.baseStr, str)
 
     val strengthTest = new SiegeCard(name, -1, new NullEffect)
-    assertEquals(strengthTest.str, 0)
+    assertEquals(strengthTest.baseStr, 0)
   }
 
   test("Testing structural equality between SiegeCard objects") {

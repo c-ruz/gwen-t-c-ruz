@@ -11,7 +11,7 @@ import munit.FunSuite
 
 import scala.collection.mutable.ArrayBuffer
 
-class DeckTest extends FunSuite{
+class DeckTest extends FunSuite {
   val deckName = "Xan-Kei Deck"
   val capacity = 3
   val Card1 = new MeleeCard("Zeeh, la primera luz", 3, new NullEffect)
@@ -22,11 +22,11 @@ class DeckTest extends FunSuite{
   var deck2: Deck = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    array2 = ArrayBuffer(Card1,Card2,Card3)
+    array2 = ArrayBuffer(Card1, Card2, Card3)
     deck1 = new Deck(deckName, capacity)
     deck2 = new Deck(array2, deckName, capacity)
   }
-  
+
   test("An empty deck can be created with a name and max capacity") {
     assertEquals(deck1.name, deckName)
     assertEquals(deck1.capacity, capacity)
@@ -65,7 +65,7 @@ class DeckTest extends FunSuite{
     assert(!deck1.equals(Card1))
     assert(!deck1.equals(deck2))
 
-    var expected = new Deck( array2, deckName, capacity)
+    var expected = new Deck(array2, deckName, capacity)
     assertEquals(expected, deck2)
 
     expected = new Deck(ArrayBuffer[Card](Card1, Card2, Card1), deckName, capacity)
