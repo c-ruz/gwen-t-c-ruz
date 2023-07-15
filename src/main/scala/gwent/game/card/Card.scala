@@ -21,6 +21,11 @@ trait Card {
    * Gets the name of the card
    */
   def name: String
+
+  /**
+   * Gets the effect.
+   */
+  def effect: Effect
   /**
    * Sends a message that the card has to be placed on the player's side.
    * @param board the board where the card is going to be placed.
