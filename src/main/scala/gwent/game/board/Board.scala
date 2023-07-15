@@ -50,6 +50,8 @@ class Board() extends Equals {
    */
   def placeWeather(card: WeatherCard): Unit = {
     _weatherSlot = Some(card)
+    card.effect.activate(card, _playerArmy)
+    card.effect.activate(card, _computerArmy)
   }
 
   /**

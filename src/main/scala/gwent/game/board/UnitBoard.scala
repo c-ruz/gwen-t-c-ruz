@@ -1,7 +1,8 @@
 package cl.uchile.dcc
 package gwent.game.board
 
-import cl.uchile.dcc.gwent.game.card.units.{MeleeCard, RangedCard, SiegeCard, UnitCard}
+import cl.uchile.dcc.gwent.game.card.WeatherCard
+import cl.uchile.dcc.gwent.game.card.units.{MeleeCard, RangedCard, SiegeCard}
 
 class UnitBoard extends Equals {
 
@@ -41,7 +42,7 @@ class UnitBoard extends Equals {
    */
   def placeMelee(card: MeleeCard): Unit = {
     _MeleeFormation = card :: _MeleeFormation
-    card.effect.activate(_MeleeFormation)
+    card.effect(card, _MeleeFormation)
   }
   /**
    * Places a RangedCard in the RangedFormation list.
@@ -49,7 +50,7 @@ class UnitBoard extends Equals {
    */
   def placeRanged(card: RangedCard): Unit = {
     _RangedFormation = card :: _RangedFormation
-    card.effect.activate(_RangedFormation)
+    card.effect(card, _RangedFormation)
   }
   /**
    * Places a SiegeCard in the SiegeFormation list.
@@ -57,7 +58,31 @@ class UnitBoard extends Equals {
    */
   def placeSiege(card: SiegeCard): Unit = {
     _SiegeFormation = card :: _SiegeFormation
-    card.effect.activate(_SiegeFormation)
+    card.effect(card, _SiegeFormation)
+  }
+
+  /**
+   * Apply the effect of the weather card on the melee row.
+   * @param card the card with the effect
+   */
+  def onMelee(card: WeatherCard): Unit = {
+    card.effect(card, _MeleeFormation)
+  }
+
+  /**
+   * Apply the effect of the weather card on the ranged row.
+   * @param card the card with the effect
+   */
+  def onRanged(card: WeatherCard): Unit = {
+    card.effect(card, _RangedFormation)
+  }
+
+  /**
+   * Apply the effect of the weather card on the siege row.
+   * @param card the card with the effect
+   */
+  def onSiege(card: WeatherCard): Unit = {
+    card.effect(card, _SiegeFormation)
   }
 
   /**
