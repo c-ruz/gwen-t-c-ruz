@@ -2,16 +2,22 @@ package cl.uchile.dcc
 package gwent.game.effects.unitCardEffects
 
 import gwent.game.card.Card
-import gwent.game.card.units.UnitCard
 import gwent.game.effects.Effect
+import gwent.game.card.units.UnitCard
 
-class NullEffect() extends AbsUnitEffect {
+class NullEffect() extends UnitEffect {
   
   override def name: String = "No effect"
 
-  override def description: String = "This card has no effect"
+  override def description: String = "This card has no effect."
 
-  override def activate(row: List[UnitCard]): Unit = {
-    // Does nothing
+  /**
+   * Does nothing.
+   * @param self  The card with the effect.
+   * @param target  Target row of cards.
+   */
+  override def apply(self: Card, target: List[UnitCard]): Unit = {
   }
+
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[NullEffect]
 }

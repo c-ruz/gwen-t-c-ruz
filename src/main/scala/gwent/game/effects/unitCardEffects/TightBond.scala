@@ -7,21 +7,28 @@ import cl.uchile.dcc.gwent.game.board.Board
 import cl.uchile.dcc.gwent.game.card.Card
 import cl.uchile.dcc.gwent.game.card.units.UnitCard
 
-class TightBond() extends AbsUnitEffect {
+class TightBond() extends UnitEffect {
 
   override def name: String = "Tight Bond"
 
   override def description: String = "Placing this unit in a row with cards with the same name, " +
     "will double both the strength of those cards and itself."
 
-  override def activate(row: List[UnitCard]): Unit = {
-    val compare = row.head.name
-    if (row.tail.exists(card => {card.name == compare})) {
-      for (card <- row) {
-        if (card.name == compare) {
-          card.SetCurrStr(card.currStr*2)
+  /**
+   * If there exists one or more cards with the same name as self, in the target row, then 
+   * doubles the strength of those cards and self.
+   * @param self  The card with the effect.
+   * @param target  Target row of cards.
+   */
+  override def apply(self: Card, target: List[UnitCard]): Unit = {
+    if (target.tail.exists(card => {card.name == self.name})) {
+      for (card <- target) {
+        if (card.name == self.name) {
+          card.setCurrStr(card.currStr * 2)
         }
       }
     }
   }
+
+  override def canEqual(that: Any): Boolean = that.isInstanceOf[TightBond]
 }
