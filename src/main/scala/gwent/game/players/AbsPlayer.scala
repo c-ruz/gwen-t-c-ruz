@@ -15,7 +15,7 @@ import cl.uchile.dcc.gwent.game.board.Board
  * @param _hand The hand assigned to the player
  */
 abstract class AbsPlayer(private val _name: String, private var _gems: Int,
-                private val _deck: Deck, private val _hand: Hand, _board: Board) extends Equals {
+                private val _deck: Deck, private val _hand: Hand, _board: Board) extends IPlayer with Equals {
 
   /**
    * If constructor gems value < 0, then set them to 0.
@@ -27,20 +27,19 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
    * Getters and Setters
    * ====================
    */
-  def name: String = _name
-  def gems: Int = {
+  override def name: String = _name
+  override def gems: Int = {
     val clone = _gems
     clone
   }
-  def hand: Hand = {
+  override def hand: Hand = {
     val clone = new Hand(_hand.cards, _hand.handCapacity)
     clone
   }
-  def deck: Deck = {
+  override def deck: Deck = {
     val clone = new Deck(_deck.cards, _deck.name, _deck.capacity)
     clone
   }
-  def board: Board = _board
   /**
    * Sets new value for gems, min == 0.
    * @param NewGems New gem value to set.
@@ -77,7 +76,7 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
    * @param n Amount of cards to draw from player's deck.
    */
   
-  def draw(n: Int = 3): Unit = {
+  override def draw(n: Int = 3): Unit = {
     var n2 = math.max(0,n)
     while (_hand.holding < _hand.handCapacity &&
     _deck.holding != 0 && n2 != 0) {
@@ -91,11 +90,7 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
   def hit(): Unit = {
     gems_(_gems - 1)
   }
-
-  /**
-   * Sends a message to the card for it to place itself in the corresponding board section.
-   * @param index        position on hand of the card to be put in the board.
-   */
-  def play(index: Int): Unit
-  
+  override def shuffle(): Unit = {
+    _deck.mix()
+  }
 }
