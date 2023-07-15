@@ -73,7 +73,7 @@ class Deck(private val _name: String,
    * Returns true if both decks have the same cards, regardless of order.
    * @param other The other deck to compare.
    */
-  def sameCards(other: Deck): Boolean = {
+  private def sameCards(other: Deck): Boolean = {
     if (this._cards.length == other._cards.length) {
       val compare = other._cards.clone()
       for (card <- this._cards) {

@@ -71,7 +71,7 @@ class Hand(private val _handCapacity: Int) extends Equals {
    *
    * @param other The other hand to compare.
    */
-  def sameCards(other: Hand): Boolean = {
+  private def sameCards(other: Hand): Boolean = {
     if (this._cards.length == other._cards.length) {
       val compare = other._cards.clone()
       for (card <- this._cards) {
