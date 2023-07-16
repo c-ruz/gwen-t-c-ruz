@@ -3,11 +3,13 @@ package gwent.game.states
 
 import gwent.game.Controller
 
-class firstDrawState extends State {
+class FirstDrawState extends State {
 
   override def isFirstDraw: Boolean = true
 
   override def initialDraw(c: Controller): Unit = {
-    this.changeState(c, new playerTurnState())
+    c.cpuCapsule.head.draw(10)
+    c.playerCapsule.head.draw(10)
+    this.changeState(c, new PlayerTurnState())
   } 
 }

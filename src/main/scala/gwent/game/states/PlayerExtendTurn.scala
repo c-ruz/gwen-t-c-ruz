@@ -3,14 +3,15 @@ package gwent.game.states
 
 import gwent.game.Controller
 
-class playerExtendTurn extends State {
+class PlayerExtendTurn extends State {
   override def isPlayerExtendedTurn: Boolean = true
 
-  override def play(c: Controller): Unit = {
-    this.changeState(c, new playerExtendTurn)
+  override def play(c: Controller, index: Int): Unit = {
+    c.playerCapsule.head.play(index)
+    this.changeState(c, new PlayerExtendTurn)
   }
 
   override def pass(c: Controller): Unit = {
-    this.changeState(c, new endPhaseState)
+    this.changeState(c, new EndPhaseState)
   }
 }

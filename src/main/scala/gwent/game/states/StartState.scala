@@ -5,9 +5,8 @@ import gwent.game.Controller
 
 class StartState extends State {
 
-  override def initializeGame(c: Controller): Unit = {
-    this.changeState(c, new firstDrawState())
+  override def startGame(c: Controller): Unit = {
+    this.changeState(c, new FirstDrawState())
   }
-
   override def isStart: Boolean = true
 }

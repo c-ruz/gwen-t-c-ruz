@@ -3,10 +3,13 @@ package gwent.game.states
 
 import gwent.game.Controller
 
-class roundStartState extends State {
+class RoundStartState extends State {
   override def isRoundStart: Boolean = true
 
   override def bothDraw(c: Controller): Unit = {
-    this.changeState(c, new playerTurnState)
+    c.board.reset()
+    c.playerCapsule.head.draw()
+    c.cpuCapsule.head.draw()
+    this.changeState(c, new PlayerTurnState)
   }
 }
