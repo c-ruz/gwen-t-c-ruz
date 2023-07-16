@@ -1,7 +1,9 @@
 package cl.uchile.dcc
 package gwent.game.factory.deck
 
-import gwent.game.factory.cardFactory.{UnitCardFactory, WeatherCardFactory}
+import gwent.game.factory.cardFactory.{CardFactory, UnitCardFactory, WeatherCardFactory}
+
+import cl.uchile.dcc.gwent.game.card.handler.Deck
 
 abstract class AbsDeckFactory extends DeckFactory {
   protected var _name: String = "Deck Name"
@@ -16,5 +18,12 @@ abstract class AbsDeckFactory extends DeckFactory {
 
   override def setCapacity(newCap: Int): Unit = {
     _capacity = math.max(0, newCap)
+  }
+  protected def fill(deck: Deck, amount: Int, factory: CardFactory): Unit = {
+    var n = amount
+    while(n!=0){
+      deck.addCard(factory.create())
+      n-=1   
+    }
   }
 }
