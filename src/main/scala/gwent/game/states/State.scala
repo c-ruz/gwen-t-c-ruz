@@ -9,14 +9,16 @@ class State {
     c.setState(state)
   }
 
-  def error() = throw new InvalidTransitionException("Wrong State")
-
-  def bothDraw(c: Controller): Unit = error()
-  def play(c: Controller): Unit = error()
-  def pass(c: Controller): Unit = error()
-  def hit(c: Controller): Unit = error()
-  def initializeGame(c: Controller): Unit = error()
-  def initialDraw(c: Controller): Unit = error()
+  def error(method: String) = {
+    throw new InvalidTransitionException(s"Can't transition with $method in ${getClass.getSimpleName}")
+  }
+  def bothDraw(c: Controller): Unit = error("bothDraw")
+  def play(c: Controller, index: Int): Unit = error("play")
+  def pass(c: Controller): Unit = error("pass")
+  def hit(c: Controller): Unit = error("hit")
+  def startGame(c: Controller): Unit = error("startGame")
+  def initialDraw(c: Controller): Unit = error("initialDraw")
+  def reset(c: Controller): Unit = error("reset")
 
   def isStart: Boolean = false
   def isFirstDraw: Boolean = false
@@ -26,5 +28,7 @@ class State {
   def isCpuExtendedTurn: Boolean = false
   def isEndPhase: Boolean = false
   def isRoundStart: Boolean = false
+  
+  def isGameFinished: Boolean = false
 
 }
