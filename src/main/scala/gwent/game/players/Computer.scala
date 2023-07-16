@@ -29,10 +29,16 @@ class Computer(name: String, gems: Int,
    * Sends a message to card saying a computer is playing the card
    * @param index        Position of the card to be played. Position starts at 1.
    */
-  def play(index: Int): Unit = {
+  override def play(index: Int): Unit = {
     if (index <= hand.holding && index > 0) {
       hand.getCard(index).placeOnComputer(board)
       hand.removeCard(index)
+    }
+  }
+
+  override def notifyObserver(arg: Any): Unit = {
+    for (o <- observers) {
+      o.updateCpu(this, arg)
     }
   }
 }

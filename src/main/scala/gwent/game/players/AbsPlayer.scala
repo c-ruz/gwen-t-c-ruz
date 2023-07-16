@@ -4,7 +4,10 @@ package gwent.game.players
 import gwent.game.card.handler.{Deck, Hand}
 import gwent.game.card.Card
 
+import cl.uchile.dcc.gwent.game.Observer
 import cl.uchile.dcc.gwent.game.board.Board
+
+import scala.collection.mutable.ListBuffer
 
 /**
  * Represents a player in the game.
@@ -15,13 +18,14 @@ import cl.uchile.dcc.gwent.game.board.Board
  * @param _hand The hand assigned to the player
  */
 abstract class AbsPlayer(private val _name: String, private var _gems: Int,
-                private val _deck: Deck, private val _hand: Hand, _board: Board) extends IPlayer with Equals {
+                private val _deck: Deck, private val _hand: Hand, _board: Board) extends IPlayer with Equals with ISubject {
 
   /**
    * If constructor gems value < 0, then set them to 0.
    */
   gems_(gems)
 
+  protected val observers: ListBuffer[Observer] = ListBuffer()
   /**
    * ====================
    * Getters and Setters
@@ -89,8 +93,13 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
    */
   def hit(): Unit = {
     gems_(_gems - 1)
+    notifyObserver(this.gems)
   }
   override def shuffle(): Unit = {
     _deck.mix()
+  }
+
+  override def registerObserver(o: Observer): Unit = {
+    observers += o
   }
 }
