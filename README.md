@@ -59,7 +59,7 @@ States of the game
 -------
 #### State pattern implementation to model game flow
 
-![StateDiagram](img/State_diagram-25.jpg)
+![StateDiagram](img/StateDiagram.png)
 
 ---
 
