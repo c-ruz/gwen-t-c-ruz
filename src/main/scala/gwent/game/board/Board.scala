@@ -54,6 +54,19 @@ class Board() extends Equals {
     card.effect.activate(card, _computerArmy)
   }
 
+  def playerStr: Int = {
+    _playerArmy.totalStr
+  }
+
+  def cpuStr: Int = {
+    _computerArmy.totalStr
+  }
+
+  def reset(): Unit = {
+    _computerArmy.clean()
+    _playerArmy.clean()
+  }
+
   /**
    * =====================
    * Equals Implementation

@@ -85,6 +85,20 @@ class UnitBoard extends Equals {
     card.effect(card, _SiegeFormation)
   }
 
+  def totalStr: Int = {
+    var total: Int = 0
+    _MeleeFormation.foreach(c => total += c.currStr)
+    _RangedFormation.foreach(c => total += c.currStr)
+    _SiegeFormation.foreach(c => total += c.currStr)
+    total
+  }
+  
+  def clean(): Unit = {
+    _MeleeFormation = List()
+    _RangedFormation = List()
+    _SiegeFormation = List()
+  }
+
   /**
    * ======================
    * Equals Implementation
