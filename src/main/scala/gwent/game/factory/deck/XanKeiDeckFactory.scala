@@ -16,54 +16,40 @@ class XanKeiDeckFactory extends AbsDeckFactory {
     unitCardFactory.setName("Eta, the wanderer")
     unitCardFactory.setStr(8)
     unitCardFactory.setEffect(new TightBond)
-    deck.addCard(unitCardFactory.create())
-    deck.addCard(unitCardFactory.create())
-    deck.addCard(unitCardFactory.create())
+    fill(deck, 3, unitCardFactory)
     // Adding some ranged cards
     unitCardFactory = new RangedCardFactory
-    unitCardFactory.setName("Wu-Qi, the unforgiving")
+    unitCardFactory.setName("Archird, the reborn")
     unitCardFactory.setStr(7)
     unitCardFactory.setEffect(new NullEffect)
-    deck.addCard(unitCardFactory.create())
-    deck.addCard(unitCardFactory.create())
-    deck.addCard(unitCardFactory.create())
+    fill(deck, 3, unitCardFactory)
     // Adding siege cards
     unitCardFactory = new SiegeCardFactory
-    unitCardFactory.setName("Zeeh, the first light")
+    unitCardFactory.setName("Sobek, no Kami")
     unitCardFactory.setStr(5)
     unitCardFactory.setEffect(new MoraleSupport)
-    deck.addCard(unitCardFactory.create())
-    deck.addCard(unitCardFactory.create())
-    deck.addCard(unitCardFactory.create())
+    fill(deck, 3, unitCardFactory)
     // Adding more melee cards
     unitCardFactory = new MeleeCardFactory
-    unitCardFactory.setName("Diral, the spiral dimension")
-    unitCardFactory.setStr(4)
+    unitCardFactory.setName("Lao-Hu, incarnated will")
+    unitCardFactory.setStr(5)
     unitCardFactory.setEffect(new MoraleSupport)
-    deck.addCard(unitCardFactory.create())
-    deck.addCard(unitCardFactory.create())
-    deck.addCard(unitCardFactory.create())
+    fill(deck, 3, unitCardFactory)
     //Adding weather cards
     weatherCardFactory.setName("Clear Weather")
-    deck.addCard(weatherCardFactory.create())
-    deck.addCard(weatherCardFactory.create())
-    deck.addCard(weatherCardFactory.create())
+    fill(deck, 3, weatherCardFactory)
 
     weatherCardFactory.setName("Biting Frost")
     weatherCardFactory.setEffect(new BitingFrost)
-    deck.addCard(weatherCardFactory.create())
-    deck.addCard(weatherCardFactory.create())
+    fill(deck, 2, weatherCardFactory)
 
     weatherCardFactory.setName("Impenetrable Fog")
     weatherCardFactory.setEffect(new ImpenetrableFog)
-    deck.addCard(weatherCardFactory.create())
-    deck.addCard(weatherCardFactory.create())
+    fill(deck, 2, weatherCardFactory)
 
     weatherCardFactory.setName("Torrential Rain")
     weatherCardFactory.setEffect(new TorrentialRain)
-    deck.addCard(weatherCardFactory.create())
-    deck.addCard(weatherCardFactory.create())
-    deck.addCard(weatherCardFactory.create())
+    fill(deck, 3, weatherCardFactory)
 
     deck
   }
