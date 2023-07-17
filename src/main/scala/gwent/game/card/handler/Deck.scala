@@ -38,17 +38,42 @@ class Deck(private val _name: String,
    * Getters y Setters
    * ==================
    */
+
+  /**
+   * Gets the name of the deck.
+   * @return A string with the name of the deck.
+   */
   def name: String = _name
+
+  /**
+   * Gets the capacity of the deck.
+   * @return  An int with the capacity of the deck.
+   */
   def capacity: Int = _capacity
+
+  /**
+   * Gets the amount of cards the deck is holding.
+   * @return  An int with the amount of cards.
+   */
   def holding: Int = {
     val clone = _holding
     clone
   }
+
+  /**
+   * Gets the cards the deck is holding.
+   * @return  An ArrayBuffer with the cards in the deck.
+   */
   def cards: ArrayBuffer[Card] = {
     val clone = _cards.clone()
     clone
   }
 
+  /**
+   * Private setter of the holding parameter in deck. Used in methods that change the
+   * cards the deck is holding.
+   * @param NewHolding  The new amount to set.
+   */
   private def holding_(NewHolding: Int): Unit = {
     _holding = math.max(0, NewHolding)
   }
@@ -103,7 +128,8 @@ class Deck(private val _name: String,
   }
 
   /**
-   * Returns the first card in the deck and removes it.
+   * Gets the first card in the deck and then removes it.
+   * @return  The card on top.
    */
   def getFirst: Card = {
     val card = this._cards(0)

@@ -34,17 +34,36 @@ class Hand(private val _handCapacity: Int) extends Equals {
    * Getters y Setters
    * ===================
    */
+
+  /**
+   * Hand capacity getter.
+   * @return  The capacity of the hand.
+   */
   def handCapacity: Int = _handCapacity
 
+  /**
+   * Gets the amount of cards the hand is holding.
+   * @return  An int with the amount of cards.
+   */
   def holding: Int = {
     val clone = _holding
     clone
   }
+
+  /**
+   * Gets a copy of list with the cards in the hand.
+   * @return An ArrayBuffer with the cards.  
+   */
   def cards: ArrayBuffer[Card] = {
     val clone = _cards.clone()
     clone
   }
 
+  /**
+   * Private setter of the holding parameter in hand. Used in some methods that change the
+   * cards in the hand.
+   * @param NewHolding  The new amount to be set.
+   */
   private def holding_(NewHolding: Int): Unit = {
     _holding = math.max(0, NewHolding)
   }
@@ -68,7 +87,6 @@ class Hand(private val _handCapacity: Int) extends Equals {
 
   /**
    * Returns true if both hands have the same cards, regardless of order.
-   *
    * @param other The other hand to compare.
    */
   private def sameCards(other: Hand): Boolean = {

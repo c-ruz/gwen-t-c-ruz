@@ -9,7 +9,7 @@ import cl.uchile.dcc.gwent.game.effects.Effect
 /**
  * Represents the common structure of a card in the game.
  */
-trait Card {
+trait Card extends Equals {
 
   /**
    * =============

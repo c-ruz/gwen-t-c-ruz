@@ -14,11 +14,11 @@ class ObserverTest extends FunSuite{
   var controller3: Controller = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    controller = new Controller(new Test1DeckFactory(0), new Test1DeckFactory(0))
+    controller = new Controller(new Test1DeckFactory(), new Test1DeckFactory())
 
-    controller2 = new Controller(new Test1DeckFactory(1), new Test1DeckFactory(0))
+    controller2 = new Controller(new Test1DeckFactory(1), new Test1DeckFactory())
 
-    controller3 = new Controller(new Test1DeckFactory(0), new Test1DeckFactory(1))
+    controller3 = new Controller(new Test1DeckFactory(), new Test1DeckFactory(1))
   }
 
   test("Game ending in a Draw") {

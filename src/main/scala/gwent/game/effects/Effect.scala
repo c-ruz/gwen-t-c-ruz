@@ -25,7 +25,7 @@ trait Effect extends Equals {
    * @param target  Target row of cards.
    */
   def apply(self: Card, target: List[UnitCard]): Unit
-  
+
   override def equals(obj: Any): Boolean = {
     if (canEqual(obj)) {
       true

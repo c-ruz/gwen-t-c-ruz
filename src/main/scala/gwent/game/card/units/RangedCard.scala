@@ -15,18 +15,8 @@ import java.util.Objects
  * @param name The name of the card.
  * @param str  The strength of the card.            
  */
-class RangedCard(name: String, str: Int, effect: UnitEffect) extends AbsUnitCard(name, str, effect) with Equals {
+class RangedCard(name: String, str: Int, effect: UnitEffect) extends AbsUnitCard(name, str, effect) {
   override def canEqual(that: Any): Boolean = that.isInstanceOf[RangedCard]
-
-  override def equals(obj: Any): Boolean = {
-    if (canEqual(obj: Any)) {
-      val other = obj.asInstanceOf[RangedCard]
-      (this eq other) ||
-        (this.name == other.name && this.str == other.baseStr)
-    } else {
-      false
-    }
-  }
   override def hashCode(): Int = Objects.hash(classOf[RangedCard], name, str)
 
   /**

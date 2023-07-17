@@ -54,14 +54,25 @@ class Board() extends Equals {
     card.effect.activate(card, _computerArmy)
   }
 
+  /**
+   * Calculates the total strength in the players' side.
+   * @return  An int with the total.
+   */
   def playerStr: Int = {
     _playerArmy.totalStr
   }
 
+  /**
+   * Calculates the total strength in the cpu's side.
+   * @return  An int with the total.
+   */
   def cpuStr: Int = {
     _computerArmy.totalStr
   }
 
+  /**
+   * Calls the clean() method for both UnitBoards forming the Board.
+   */
   def reset(): Unit = {
     _computerArmy.clean()
     _playerArmy.clean()

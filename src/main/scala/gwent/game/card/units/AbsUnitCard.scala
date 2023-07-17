@@ -75,10 +75,20 @@ abstract class AbsUnitCard(private val _name: String, private var _str: Int, pri
   }
 
   /**
-   * Sets the status of the card. 
+   * Sets the status of the card. Status is a Boolean.
    * @param NewStatus The new status.
    */
   override def setStatus(NewStatus: Boolean): Unit = {
     _status = NewStatus
+  }
+
+  override def equals(obj: Any): Boolean = {
+    if (canEqual(obj: Any)) {
+      val other = obj.asInstanceOf[UnitCard]
+      (this eq other) ||
+        (this.name == other.name && this.baseStr == other.baseStr && this.effect == other.effect)
+    } else {
+      false
+    }
   }
 }

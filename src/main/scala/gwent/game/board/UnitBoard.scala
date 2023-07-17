@@ -18,14 +18,29 @@ class UnitBoard extends Equals {
    * Getters
    * ==========
    */
+
+  /**
+   * Gets the cards in the melee row.
+   * @return  A List with the cards.
+   */
   def MeleeFormation: List[MeleeCard] = {
     val clone = List[MeleeCard]()
     clone ::: _MeleeFormation
   }
+
+  /**
+   * Gets the cards in the ranged row.
+   * @return  A List with the cards.
+   */
   def RangedFormation: List[RangedCard] = {
     val clone = List[RangedCard]()
     clone ::: _RangedFormation
   }
+
+  /**
+   * Gets the cards in the siege row.
+   * @return  A List with the cards.
+   */
   def SiegeFormation: List[SiegeCard] = {
     val clone = List[SiegeCard]()
     clone ::: _SiegeFormation
@@ -85,6 +100,10 @@ class UnitBoard extends Equals {
     card.effect(card, _SiegeFormation)
   }
 
+  /**
+   * Calculates the total strength of all cards placed.
+   * @return  An int with the sum of the total strength of all rows.
+   */
   def totalStr: Int = {
     var total: Int = 0
     _MeleeFormation.foreach(c => total += c.currStr)
@@ -92,7 +111,10 @@ class UnitBoard extends Equals {
     _SiegeFormation.foreach(c => total += c.currStr)
     total
   }
-  
+
+  /**
+   * Removes all cards of the unit board.
+   */
   def clean(): Unit = {
     _MeleeFormation = List()
     _RangedFormation = List()

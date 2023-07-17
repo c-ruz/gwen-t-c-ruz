@@ -14,7 +14,11 @@ class WeatherCardFactory extends CardFactory {
   def setName(newName: String): Unit = {
     _name = newName
   }
-  
+
+  /**
+   * Changes the effect of the WeatherCard.
+   * @param newEffect A WeatherEffect.
+   */
   def setEffect(newEffect: WeatherEffect): Unit = {
     _effect = newEffect
   }

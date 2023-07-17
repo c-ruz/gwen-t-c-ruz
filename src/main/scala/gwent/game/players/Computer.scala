@@ -35,7 +35,6 @@ class Computer(name: String, gems: Int,
       hand.removeCard(index)
     }
   }
-
   override def notifyObserver(arg: Any): Unit = {
     for (o <- observers) {
       o.updateCpu(this, arg)

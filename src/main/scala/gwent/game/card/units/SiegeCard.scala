@@ -15,19 +15,8 @@ import java.util.Objects
  * @param name The name of the card.
  * @param str  The strength of the card.            
  */
-class SiegeCard(name: String, str: Int, effect: UnitEffect) extends AbsUnitCard(name, str, effect) with Equals {
+class SiegeCard(name: String, str: Int, effect: UnitEffect) extends AbsUnitCard(name, str, effect) {
   override def canEqual(that: Any): Boolean = that.isInstanceOf[SiegeCard]
-
-  override def equals(obj: Any): Boolean = {
-    if (canEqual(obj: Any)) {
-      val other = obj.asInstanceOf[SiegeCard]
-      (this eq other) ||
-        (this.name == other.name && this.str == other.baseStr)
-    } else {
-      false
-    }
-  }
-
   override def hashCode(): Int = Objects.hash(classOf[SiegeCard], name, str)
 
 

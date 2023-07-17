@@ -60,7 +60,7 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
    */
   override def equals(obj: Any): Boolean = {
     if (canEqual(obj)) {
-      val other = obj.asInstanceOf[AbsPlayer]
+      val other = obj.asInstanceOf[IPlayer]
       (this eq other) ||
         (this.name == other.name && this.deck.equals(other.deck))
     } else {
@@ -95,10 +95,13 @@ abstract class AbsPlayer(private val _name: String, private var _gems: Int,
     gems_(_gems - 1)
     notifyObserver(this.gems)
   }
+
+  /**
+   * Shuffles the deck of the player.
+   */
   override def shuffle(): Unit = {
     _deck.mix()
   }
-
   override def registerObserver(o: Observer): Unit = {
     observers += o
   }

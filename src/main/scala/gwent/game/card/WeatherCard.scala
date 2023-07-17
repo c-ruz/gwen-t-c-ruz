@@ -14,7 +14,7 @@ import java.util.Objects
  * Represents a weather card used in the game.
  * @param _name The name of the card.
  */
-class WeatherCard(private val _name: String, private val _effect: WeatherEffect) extends Card with Equals {
+class WeatherCard(private val _name: String, private val _effect: WeatherEffect) extends Card {
   /**
    * Gets the name of the card
    */
@@ -38,13 +38,17 @@ class WeatherCard(private val _name: String, private val _effect: WeatherEffect)
   override def hashCode(): Int = Objects.hash(classOf[WeatherCard], name)
 
   /**
-   * Both methods place a weather card in the Weather Slot of the board received.
+   * This method places the weather card in the weather slot of the board given.
    * @param board the board where the card is going to be placed.
    */
   def placeOnPlayer(board: Board): Unit = {
     board.placeWeather(this)
   }
 
+  /**
+   * This method places the weather card in the weather slot of the board given.
+   * @param board the board where the card is going to be placed.
+   */
   def placeOnComputer(board: Board): Unit = {
     board.placeWeather(this)
   }
