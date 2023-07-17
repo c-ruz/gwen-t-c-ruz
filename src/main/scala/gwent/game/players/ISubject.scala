@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.game.players
 
-import gwent.game.Observer
+import cl.uchile.dcc.gwent.game.controller.Observer
 
 
 trait ISubject {

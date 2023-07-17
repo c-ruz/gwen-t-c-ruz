@@ -1,12 +1,11 @@
 package cl.uchile.dcc
-package gwent.game
+package gwent.game.controller
 
+import gwent.game.board.Board
+import gwent.game.factory.deck.{DeckFactory, FlyingGangDeckFactory, XanKeiDeckFactory}
+import gwent.game.factory.players.{CpuFactory, HumanFactory}
+import gwent.game.players.{Computer, ISubject, Player}
 import gwent.game.states.*
-
-import cl.uchile.dcc.gwent.game.board.Board
-import cl.uchile.dcc.gwent.game.factory.deck.{DeckFactory, FlyingGangDeckFactory, XanKeiDeckFactory}
-import cl.uchile.dcc.gwent.game.factory.players.{CpuFactory, HumanFactory}
-import cl.uchile.dcc.gwent.game.players.{Computer, ISubject, Player}
 
 import scala.collection.mutable.ListBuffer
 

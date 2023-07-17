@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.game.states
 
-import cl.uchile.dcc.gwent.game.Controller
+import cl.uchile.dcc.gwent.game.controller.Controller
 import cl.uchile.dcc.gwent.game.states.exception.InvalidTransitionException
 
 class State {

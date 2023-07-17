@@ -1,8 +1,8 @@
 package cl.uchile.dcc
 package gwent.game.observer
 
-import gwent.game.Controller
 import gwent.game.factory.deck.Test1DeckFactory
+import cl.uchile.dcc.gwent.game.controller.Controller
 
 import cl.uchile.dcc.gwent.game.states.exception.InvalidTransitionException
 import munit.FunSuite

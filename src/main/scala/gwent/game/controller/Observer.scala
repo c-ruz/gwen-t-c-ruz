@@ -1,5 +1,5 @@
 package cl.uchile.dcc
-package gwent.game
+package gwent.game.controller
 
 import gwent.game.players.ISubject
 

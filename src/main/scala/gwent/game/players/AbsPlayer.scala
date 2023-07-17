@@ -3,9 +3,8 @@ package gwent.game.players
 
 import gwent.game.card.handler.{Deck, Hand}
 import gwent.game.card.Card
-
-import cl.uchile.dcc.gwent.game.Observer
 import cl.uchile.dcc.gwent.game.board.Board
+import cl.uchile.dcc.gwent.game.controller.Observer
 
 import scala.collection.mutable.ListBuffer
 

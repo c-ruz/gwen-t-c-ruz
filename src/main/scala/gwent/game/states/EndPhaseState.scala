@@ -1,7 +1,7 @@
 package cl.uchile.dcc
 package gwent.game.states
 
-import gwent.game.Controller
+import cl.uchile.dcc.gwent.game.controller.Controller
 
 /**
  * Creates an EndPhase state. Can use hit transition.

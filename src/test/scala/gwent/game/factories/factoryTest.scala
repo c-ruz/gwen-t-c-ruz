@@ -1,10 +1,10 @@
 package cl.uchile.dcc
 package gwent.game.factories
 
-import gwent.game.Controller
 import gwent.game.factory.deck.{DeckFactory, FlyingGangDeckFactory, Test1DeckFactory, XanKeiDeckFactory}
 
 import cl.uchile.dcc.gwent.game.board.Board
+import cl.uchile.dcc.gwent.game.controller.Controller
 import cl.uchile.dcc.gwent.game.factory.players.{HumanFactory, PlayerFactory}
 import munit.FunSuite
 
