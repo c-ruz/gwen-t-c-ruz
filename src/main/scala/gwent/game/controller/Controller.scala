@@ -11,8 +11,8 @@ import scala.collection.mutable.ListBuffer
 
 /**
  * Creates a Controller. Controller starts in Start state and is waiting to commence with the game.
- * 
- * @param deckFactory1  DeckFactory for the player.  
+ *
+ * @param deckFactory1  DeckFactory for the player.
  * @param deckFactory2  DeckFactory for the cpu.
  */
 class Controller(deckFactory1: DeckFactory, deckFactory2: DeckFactory) extends Observer {
@@ -29,7 +29,7 @@ class Controller(deckFactory1: DeckFactory, deckFactory2: DeckFactory) extends O
 
   /**
    * Gets the state of the game.
-   * @return  True if this controller is currently in a game. False if not. 
+   * @return  True if this controller is currently in a game. False if not.
    */
   def getGameState: Boolean = gameActive
 
@@ -203,7 +203,7 @@ class Controller(deckFactory1: DeckFactory, deckFactory2: DeckFactory) extends O
   }
 
   /**
-   * This method is called when a both players have the same total strength at the
+   * This method is called when both players have the same total strength at the
    * end of a round. If both players have 0 gems left, ends the game as a Draw.
    */
   def drawHandler(): Unit = {
