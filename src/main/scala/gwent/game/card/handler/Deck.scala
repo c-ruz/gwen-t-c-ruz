@@ -11,7 +11,7 @@ import scala.collection.mutable.ArrayBuffer
  */
 class Deck(private val _name: String,
            private val _capacity: Int) extends Equals {
-  private val _cards: ArrayBuffer[Card] = ArrayBuffer()
+  private var _cards: ArrayBuffer[Card] = ArrayBuffer()
   private var _holding = 0
   /**
    * Represents a deck of cards used in the game.
@@ -124,7 +124,7 @@ class Deck(private val _name: String,
    * Shuffles the cards in the deck.
    */
   def mix(): Unit = {
-    util.Random.shuffle(this._cards)
+    _cards = util.Random.shuffle(_cards)
   }
 
   /**
